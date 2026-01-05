@@ -20,17 +20,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #6B9BD1 0%, #00FF7F 100%);
+            background-image: url('host_promo_intersection_2025.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             padding: 2rem;
+            position: relative;
         }
 
-        body {
-            background-image: url(host_promo_intersection_2025.jpg);
+        /* Dark overlay for better text readability */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
         }
-        */
 
         .coming-soon-container {
             max-width: 600px;
@@ -39,8 +47,10 @@
             backdrop-filter: blur(10px);
             padding: 3rem;
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
