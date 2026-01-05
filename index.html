@@ -14,10 +14,21 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section - Full Screen */
+        .hero-section {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             background-image: url('host_promo_intersection_2025.jpg');
@@ -26,10 +37,11 @@
             background-attachment: fixed;
             padding: 2rem;
             position: relative;
+            text-align: center;
         }
 
         /* Dark overlay for better text readability */
-        body::before {
+        .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -40,7 +52,76 @@
             z-index: 0;
         }
 
-        .coming-soon-container {
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Overpass', sans-serif;
+            font-size: 4rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-family: 'Overpass', sans-serif;
+            font-size: 2rem;
+            color: black;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
+            margin-bottom: 8rem;
+        }
+
+        .announcement {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            color: #1F2937;
+            line-height: 1.6;
+            max-width: 600px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #6B9BD1 0%, #00FF7F 100%);
+            padding: 4rem 2rem;
+        }
+
+        .contact-container {
             max-width: 600px;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
@@ -49,33 +130,18 @@
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
-        h1 {
+        .contact-container h2 {
             font-family: 'Overpass', sans-serif;
-            font-size: 3rem;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            font-family: 'Overpass', sans-serif;
-            font-size: 1.8rem;
-            color: black;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .announcement {
-            background: rgba(107, 155, 209, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 1rem;
+            font-size: 2.5rem;
             color: #1F2937;
-            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .contact-container p {
+            font-size: 1.1rem;
+            color: #4B5563;
             margin-bottom: 2rem;
         }
 
@@ -145,66 +211,76 @@
             font-weight: 600;
         }
 
-        .spacer {
-            height: 1rem;
-        }
-
         @media (max-width: 768px) {
-            .coming-soon-container {
-                padding: 2rem;
-            }
-
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .tagline {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
+                margin-bottom: 4rem;
             }
 
             .announcement {
-                font-size: 0.95rem;
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .contact-container {
+                padding: 2rem;
+            }
+
+            .contact-container h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-indicator {
+                animation: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="coming-soon-container">
-        <h1>The Intersection</h1>
-        <p class="tagline">Look Both Ways</p>
-        
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        <div class="spacer"></div>
-        
-        <p class="announcement">The Intersection, coming soon to C31 Melbourne and Geelong</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>The Intersection</h1>
+            <p class="tagline">Look Both Ways</p>
+            <p class="announcement">The Intersection, coming soon to C31 Melbourne and Geelong</p>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" aria-label="Scroll down for contact form">
+            ↓
+        </div>
+    </section>
 
-        <div class="contact-form">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message (Optional)</label>
-                <textarea id="message" rows="4"></textarea>
-            </div>
-            <button class="submit-btn" onclick="handleSubmit()">Get in Touch</button>
-            <div class="success-message" id="successMessage">
-                Thanks! We'll be in touch soon.
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Get in Touch</h2>
+            <p>Want to stay in the loop? Drop us a message below.</p>
+
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" rows="4"></textarea>
+                </div>
+                <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
+                <div class="success-message" id="successMessage">
+                    Thanks! We'll be in touch soon.
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
         function handleSubmit() {
