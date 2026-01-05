@@ -37,7 +37,7 @@
             position: relative;
         }
 
-        /* Title and Tagline - Top Left */
+        /* Logo - Top Left */
         .hero-content {
             position: absolute;
             top: 3rem;
@@ -45,24 +45,12 @@
             z-index: 1;
         }
 
-        h1 {
-            font-family: 'Overpass', sans-serif;
-            font-size: 2.56rem;
-            color: white;
-            text-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            font-family: 'Overpass', sans-serif;
-            font-size: 1.28rem;
-            color: black;
-            font-weight: 700;
-            background: #ffca05;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            display: inline-block;
-            box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+        .logo-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 1));
         }
 
         /* Announcement Box - Bottom Right */
@@ -216,12 +204,8 @@
                 left: 2rem;
             }
 
-            h1 {
-                font-size: 1.6rem;
-            }
-
-            .tagline {
-                font-size: 1rem;
+            .logo-image {
+                max-width: 280px;
             }
 
             .announcement {
@@ -250,10 +234,9 @@
 <body>
     <!-- Hero Section -->
     <section class="hero-section">
-        <!-- Title and Tagline - Top Left -->
+        <!-- Logo - Top Left -->
         <div class="hero-content">
-            <h1>The Intersection</h1>
-            <p class="tagline">Look Both Ways</p>
+            <img src="intersection_logo_temp.png" alt="The Intersection - Look Both Ways" class="logo-image">
         </div>
 
         <!-- Announcement - Bottom Right -->
