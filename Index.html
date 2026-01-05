@@ -4,181 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Intersection - Look Both Ways</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Overpass:wght@600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <div class="nav-brand">
-                <span class="tv-icon">📺</span>
+            <div class="nav-brand" onclick="showPage('home')" role="button" tabindex="0" onkeypress="if(event.key==='Enter') showPage('home')">
+                <!-- Add your logo here - replace the emoji with an <img> tag -->
+                <span class="tv-icon" aria-hidden="true">📺</span>
                 <span class="brand-name">The Intersection</span>
             </div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span aria-hidden="true">☰</span>
+            </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" onclick="showPage('home')">Home</a></li>
-                <li><a href="#about" onclick="showPage('about')">About</a></li>
-                <li><a href="#videos" onclick="showPage('videos')">Videos</a></li>
-                <li><a href="#contact" onclick="showPage('contact')">Contact</a></li>
-                <li><a href="#information" onclick="showPage('information')">Information</a></li>
+                <li><a href="#home" onclick="showPage('home'); return false;">Home</a></li>
+                <li><a href="#about" onclick="showPage('about'); return false;">About</a></li>
+                <li><a href="#videos" onclick="showPage('videos'); return false;">Videos</a></li>
+                <li><a href="#contact" onclick="showPage('contact'); return false;">Contact</a></li>
+                <li><a href="#information" onclick="showPage('information'); return false;">Information</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <div class="hero">
-            <div class="hero-content">
-                <h1>The Intersection</h1>
-                <p class="tagline">Look Both Ways</p>
-                <p class="hero-description">Your local community stories, perspectives, and voices</p>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>The Intersection</h1>
+                    <p class="tagline">Look Both Ways</p>
+                    <p class="hero-description">Your local community stories, perspectives, and voices</p>
+                </div>
             </div>
+
+            <section class="container" aria-labelledby="featured-heading">
+                <h2 id="featured-heading" class="section-title">Featured Episode</h2>
+                <div class="featured-video">
+                    <div class="video-placeholder">
+                        <!-- Replace this div with your YouTube embed code -->
+                        <p>YouTube video embed goes here</p>
+                        <p class="tip">To add a video: Replace this entire div with YouTube's embed code from the "Share" → "Embed" option</p>
+                    </div>
+                </div>
+                <p class="video-description">Latest episode description and details</p>
+            </section>
+
+            <section class="social-section" aria-labelledby="social-heading">
+                <div class="container">
+                    <h2 id="social-heading" class="section-title">Follow Us</h2>
+                    <div class="social-scroll" role="list">
+                        <div class="social-card" role="listitem">
+                            <div class="social-placeholder" aria-label="Social media post 1">Social media embed 1</div>
+                            <p>Recent post from our social channels</p>
+                        </div>
+                        <div class="social-card" role="listitem">
+                            <div class="social-placeholder" aria-label="Social media post 2">Social media embed 2</div>
+                            <p>Recent post from our social channels</p>
+                        </div>
+                        <div class="social-card" role="listitem">
+                            <div class="social-placeholder" aria-label="Social media post 3">Social media embed 3</div>
+                            <p>Recent post from our social channels</p>
+                        </div>
+                        <div class="social-card" role="listitem">
+                            <div class="social-placeholder" aria-label="Social media post 4">Social media embed 4</div>
+                            <p>Recent post from our social channels</p>
+                        </div>
+                        <div class="social-card" role="listitem">
+                            <div class="social-placeholder" aria-label="Social media post 5">Social media embed 5</div>
+                            <p>Recent post from our social channels</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
-        <div class="container">
-            <h2 class="section-title">Featured Episode</h2>
-            <div class="featured-video">
-                <div class="video-placeholder">
-                    <!-- Replace this div with your YouTube embed code -->
-                    <p>YouTube video embed goes here</p>
-                    <p class="tip">To add a video: Replace this entire div with YouTube's embed code from the "Share" → "Embed" option</p>
+        <!-- About Page -->
+        <div id="about" class="page">
+            <article class="container content-page">
+                <h1>About The Intersection</h1>
+                <div class="content">
+                    <p>The Intersection is a community television show that brings local stories, perspectives, and voices to the forefront. We believe in the power of diverse viewpoints and the importance of looking at issues from multiple angles.</p>
+                    
+                    <p>Our tagline "Look Both Ways" embodies our commitment to presenting balanced, thoughtful coverage of the topics that matter to our community.</p>
+                    
+                    <h2>Our Mission</h2>
+                    <p>To create meaningful dialogue and connection within our community through authentic storytelling and inclusive programming.</p>
                 </div>
-            </div>
-            <p class="video-description">Latest episode description and details</p>
+            </article>
         </div>
 
-        <div class="social-section">
-            <div class="container">
-                <h2 class="section-title">Follow Us</h2>
-                <div class="social-scroll">
-                    <div class="social-card">
-                        <div class="social-placeholder">Social media embed 1</div>
-                        <p>Recent post from our social channels</p>
-                    </div>
-                    <div class="social-card">
-                        <div class="social-placeholder">Social media embed 2</div>
-                        <p>Recent post from our social channels</p>
-                    </div>
-                    <div class="social-card">
-                        <div class="social-placeholder">Social media embed 3</div>
-                        <p>Recent post from our social channels</p>
-                    </div>
-                    <div class="social-card">
-                        <div class="social-placeholder">Social media embed 4</div>
-                        <p>Recent post from our social channels</p>
-                    </div>
-                    <div class="social-card">
-                        <div class="social-placeholder">Social media embed 5</div>
-                        <p>Recent post from our social channels</p>
-                    </div>
+        <!-- Videos Page -->
+        <div id="videos" class="page">
+            <section class="container content-page" aria-labelledby="episodes-heading">
+                <h1 id="episodes-heading">Episodes</h1>
+                <div class="video-grid" role="list">
+                    <article class="video-card" role="listitem">
+                        <div class="video-thumbnail" aria-label="Episode 1 thumbnail">Episode 1 - YouTube embed</div>
+                        <div class="video-info">
+                            <h3>Episode Title 1</h3>
+                            <p>Episode description and date will appear here.</p>
+                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="video-card" role="listitem">
+                        <div class="video-thumbnail" aria-label="Episode 2 thumbnail">Episode 2 - YouTube embed</div>
+                        <div class="video-info">
+                            <h3>Episode Title 2</h3>
+                            <p>Episode description and date will appear here.</p>
+                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="video-card" role="listitem">
+                        <div class="video-thumbnail" aria-label="Episode 3 thumbnail">Episode 3 - YouTube embed</div>
+                        <div class="video-info">
+                            <h3>Episode Title 3</h3>
+                            <p>Episode description and date will appear here.</p>
+                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="video-card" role="listitem">
+                        <div class="video-thumbnail" aria-label="Episode 4 thumbnail">Episode 4 - YouTube embed</div>
+                        <div class="video-info">
+                            <h3>Episode Title 4</h3>
+                            <p>Episode description and date will appear here.</p>
+                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
                 </div>
-            </div>
+            </section>
         </div>
-    </div>
 
-    <!-- About Page -->
-    <div id="about" class="page">
-        <div class="container content-page">
-            <h1>About The Intersection</h1>
-            <div class="content">
-                <p>The Intersection is a community television show that brings local stories, perspectives, and voices to the forefront. We believe in the power of diverse viewpoints and the importance of looking at issues from multiple angles.</p>
-                
-                <p>Our tagline "Look Both Ways" embodies our commitment to presenting balanced, thoughtful coverage of the topics that matter to our community.</p>
-                
-                <h2>Our Mission</h2>
-                <p>To create meaningful dialogue and connection within our community through authentic storytelling and inclusive programming.</p>
-            </div>
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <section class="container content-page" aria-labelledby="contact-heading">
+                <h1 id="contact-heading">Contact Us</h1>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="contactName">Name <span class="required" aria-label="required">*</span></label>
+                        <input type="text" id="contactName" name="name" placeholder="Your name" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email <span class="required" aria-label="required">*</span></label>
+                        <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message <span class="required" aria-label="required">*</span></label>
+                        <textarea id="contactMessage" name="message" rows="5" placeholder="Your message..." required aria-required="true"></textarea>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="handleContact()">Send Message</button>
+                </div>
+            </section>
         </div>
-    </div>
 
-    <!-- Videos Page -->
-    <div id="videos" class="page">
-        <div class="container content-page">
-            <h1>Episodes</h1>
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-thumbnail">Episode 1 - YouTube embed</div>
-                    <div class="video-info">
-                        <h3>Episode Title 1</h3>
-                        <p>Episode description and date will appear here.</p>
-                        <a href="#" class="watch-btn">Watch Now →</a>
+        <!-- Information Page -->
+        <div id="information" class="page">
+            <article class="container content-page">
+                <h1>Information</h1>
+                <div class="content">
+                    <div class="info-box">
+                        <h2>Broadcast Schedule</h2>
+                        <p>Check your local listings for air times.</p>
                     </div>
+                    
+                    <h2>How to Watch</h2>
+                    <p>Tune in to our show on your local community television channel, or watch episodes on our Videos page at any time.</p>
+                    
+                    <h2>Get Involved</h2>
+                    <p>Interested in being featured on The Intersection or have a story idea? We'd love to hear from you! Visit our Contact page to get in touch.</p>
+                    
+                    <h2>Community Partners</h2>
+                    <p>Information about partnerships and sponsors can be added here.</p>
                 </div>
-                <div class="video-card">
-                    <div class="video-thumbnail">Episode 2 - YouTube embed</div>
-                    <div class="video-info">
-                        <h3>Episode Title 2</h3>
-                        <p>Episode description and date will appear here.</p>
-                        <a href="#" class="watch-btn">Watch Now →</a>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-thumbnail">Episode 3 - YouTube embed</div>
-                    <div class="video-info">
-                        <h3>Episode Title 3</h3>
-                        <p>Episode description and date will appear here.</p>
-                        <a href="#" class="watch-btn">Watch Now →</a>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-thumbnail">Episode 4 - YouTube embed</div>
-                    <div class="video-info">
-                        <h3>Episode Title 4</h3>
-                        <p>Episode description and date will appear here.</p>
-                        <a href="#" class="watch-btn">Watch Now →</a>
-                    </div>
-                </div>
-            </div>
+            </article>
         </div>
-    </div>
-
-    <!-- Contact Page -->
-    <div id="contact" class="page">
-        <div class="container content-page">
-            <h1>Contact Us</h1>
-            <div class="contact-form">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="contactName" placeholder="Your name">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="contactEmail" placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea id="contactMessage" rows="5" placeholder="Your message..."></textarea>
-                </div>
-                <button class="submit-btn" onclick="handleContact()">Send Message</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Information Page -->
-    <div id="information" class="page">
-        <div class="container content-page">
-            <h1>Information</h1>
-            <div class="content">
-                <div class="info-box">
-                    <h2>Broadcast Schedule</h2>
-                    <p>Check your local listings for air times.</p>
-                </div>
-                
-                <h2>How to Watch</h2>
-                <p>Tune in to our show on your local community television channel, or watch episodes on our Videos page at any time.</p>
-                
-                <h2>Get Involved</h2>
-                <p>Interested in being featured on The Intersection or have a story idea? We'd love to hear from you! Visit our Contact page to get in touch.</p>
-                
-                <h2>Community Partners</h2>
-                <p>Information about partnerships and sponsors can be added here.</p>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>© 2026 The Intersection. All rights reserved.</p>
             <p class="footer-tagline">Look Both Ways</p>
@@ -193,23 +208,42 @@
             });
             
             // Show selected page
-            document.getElementById(pageId).classList.add('active');
+            const selectedPage = document.getElementById(pageId);
+            selectedPage.classList.add('active');
+            
+            // Update page title
+            const pageTitles = {
+                'home': 'Home',
+                'about': 'About',
+                'videos': 'Episodes',
+                'contact': 'Contact',
+                'information': 'Information'
+            };
+            document.title = `The Intersection - ${pageTitles[pageId]}`;
             
             // Close mobile menu
-            document.getElementById('navMenu').classList.remove('active');
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+            document.querySelector('.mobile-menu-btn').setAttribute('aria-expanded', 'false');
             
             // Scroll to top
             window.scrollTo(0, 0);
+            
+            // Focus on main content for screen readers
+            selectedPage.focus();
         }
 
         function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const isExpanded = navMenu.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', isExpanded);
         }
 
         function handleContact() {
-            const name = document.getElementById('contactName').value;
-            const email = document.getElementById('contactEmail').value;
-            const message = document.getElementById('contactMessage').value;
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
             
             if (name && email && message) {
                 alert('Thank you for your message! We will get back to you soon.');
@@ -217,19 +251,32 @@
                 document.getElementById('contactEmail').value = '';
                 document.getElementById('contactMessage').value = '';
             } else {
-                alert('Please fill in all fields.');
+                alert('Please fill in all required fields.');
             }
         }
+
+        // Accessibility: Allow Enter key to trigger navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        this.click();
+                    }
+                });
+            });
+        });
+    </script>
+
     <script>
-     if (window.netlifyIdentity) {
-       window.netlifyIdentity.on("init", user => {
-         if (!user) {
-           window.netlifyIdentity.on("login", () => {
-             document.location.href = "/admin/";
-           });
-         }
-       });
-     }
-   </script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
 </body>
 </html>
