@@ -53,31 +53,30 @@
             z-index: 1;
         }
 
-        .logo {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
         h1 {
             font-family: 'Overpass', sans-serif;
             font-size: 3rem;
-            color: #1F2937;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
             margin-bottom: 0.5rem;
         }
 
         .tagline {
             font-family: 'Overpass', sans-serif;
-            font-size: 1.5rem;
-            color: #6B9BD1;
+            font-size: 1.8rem;
+            color: black;
             margin-bottom: 1.5rem;
             font-weight: 700;
         }
 
-        p {
-            font-size: 1.1rem;
-            color: #4B5563;
-            margin-bottom: 2rem;
+        .announcement {
+            background: rgba(107, 155, 209, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #1F2937;
             line-height: 1.6;
+            margin-bottom: 2rem;
         }
 
         .contact-form {
@@ -146,6 +145,10 @@
             font-weight: 600;
         }
 
+        .spacer {
+            height: 1rem;
+        }
+
         @media (max-width: 768px) {
             .coming-soon-container {
                 padding: 2rem;
@@ -156,18 +159,32 @@
             }
 
             .tagline {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+
+            .announcement {
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="coming-soon-container">
-        <div class="logo">📺</div>
         <h1>The Intersection</h1>
         <p class="tagline">Look Both Ways</p>
-        <p>We're putting the finishing touches on something special. Our community television show is launching soon!</p>
-        <p>Want to stay in the loop? Drop us a message below.</p>
+        
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        
+        <p class="announcement">The Intersection, coming soon to C31 Melbourne and Geelong</p>
 
         <div class="contact-form">
             <div class="form-group">
