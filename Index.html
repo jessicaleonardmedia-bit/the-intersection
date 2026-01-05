@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Intersection - Look Both Ways</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="tv-icon">📺</span>
+                <span class="brand-name">The Intersection</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                <li><a href="#about" onclick="showPage('about')">About</a></li>
+                <li><a href="#videos" onclick="showPage('videos')">Videos</a></li>
+                <li><a href="#contact" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#information" onclick="showPage('information')">Information</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>The Intersection</h1>
+                <p class="tagline">Look Both Ways</p>
+                <p class="hero-description">Your local community stories, perspectives, and voices</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="section-title">Featured Episode</h2>
+            <div class="featured-video">
+                <div class="video-placeholder">
+                    <!-- Replace this div with your YouTube embed code -->
+                    <p>YouTube video embed goes here</p>
+                    <p class="tip">To add a video: Replace this entire div with YouTube's embed code from the "Share" → "Embed" option</p>
+                </div>
+            </div>
+            <p class="video-description">Latest episode description and details</p>
+        </div>
+
+        <div class="social-section">
+            <div class="container">
+                <h2 class="section-title">Follow Us</h2>
+                <div class="social-scroll">
+                    <div class="social-card">
+                        <div class="social-placeholder">Social media embed 1</div>
+                        <p>Recent post from our social channels</p>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-placeholder">Social media embed 2</div>
+                        <p>Recent post from our social channels</p>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-placeholder">Social media embed 3</div>
+                        <p>Recent post from our social channels</p>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-placeholder">Social media embed 4</div>
+                        <p>Recent post from our social channels</p>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-placeholder">Social media embed 5</div>
+                        <p>Recent post from our social channels</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="container content-page">
+            <h1>About The Intersection</h1>
+            <div class="content">
+                <p>The Intersection is a community television show that brings local stories, perspectives, and voices to the forefront. We believe in the power of diverse viewpoints and the importance of looking at issues from multiple angles.</p>
+                
+                <p>Our tagline "Look Both Ways" embodies our commitment to presenting balanced, thoughtful coverage of the topics that matter to our community.</p>
+                
+                <h2>Our Mission</h2>
+                <p>To create meaningful dialogue and connection within our community through authentic storytelling and inclusive programming.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Videos Page -->
+    <div id="videos" class="page">
+        <div class="container content-page">
+            <h1>Episodes</h1>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">Episode 1 - YouTube embed</div>
+                    <div class="video-info">
+                        <h3>Episode Title 1</h3>
+                        <p>Episode description and date will appear here.</p>
+                        <a href="#" class="watch-btn">Watch Now →</a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">Episode 2 - YouTube embed</div>
+                    <div class="video-info">
+                        <h3>Episode Title 2</h3>
+                        <p>Episode description and date will appear here.</p>
+                        <a href="#" class="watch-btn">Watch Now →</a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">Episode 3 - YouTube embed</div>
+                    <div class="video-info">
+                        <h3>Episode Title 3</h3>
+                        <p>Episode description and date will appear here.</p>
+                        <a href="#" class="watch-btn">Watch Now →</a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">Episode 4 - YouTube embed</div>
+                    <div class="video-info">
+                        <h3>Episode Title 4</h3>
+                        <p>Episode description and date will appear here.</p>
+                        <a href="#" class="watch-btn">Watch Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="container content-page">
+            <h1>Contact Us</h1>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="contactName" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="contactEmail" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="contactMessage" rows="5" placeholder="Your message..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="handleContact()">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Information Page -->
+    <div id="information" class="page">
+        <div class="container content-page">
+            <h1>Information</h1>
+            <div class="content">
+                <div class="info-box">
+                    <h2>Broadcast Schedule</h2>
+                    <p>Check your local listings for air times.</p>
+                </div>
+                
+                <h2>How to Watch</h2>
+                <p>Tune in to our show on your local community television channel, or watch episodes on our Videos page at any time.</p>
+                
+                <h2>Get Involved</h2>
+                <p>Interested in being featured on The Intersection or have a story idea? We'd love to hear from you! Visit our Contact page to get in touch.</p>
+                
+                <h2>Community Partners</h2>
+                <p>Information about partnerships and sponsors can be added here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 The Intersection. All rights reserved.</p>
+            <p class="footer-tagline">Look Both Ways</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close mobile menu
+            document.getElementById('navMenu').classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function handleContact() {
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            if (name && email && message) {
+                alert('Thank you for your message! We will get back to you soon.');
+                document.getElementById('contactName').value = '';
+                document.getElementById('contactEmail').value = '';
+                document.getElementById('contactMessage').value = '';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

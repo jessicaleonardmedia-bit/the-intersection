@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "content/homepage.yml"
+        fields:
+          - {label: "Hero Title", name: "hero_title", widget: "string", default: "The Intersection"}
+          - {label: "Tagline", name: "tagline", widget: "string", default: "Look Both Ways"}
+          - {label: "Hero Description", name: "hero_description", widget: "text"}
+          - {label: "Featured Video URL", name: "featured_video", widget: "string", hint: "YouTube embed URL"}
+          - {label: "Video Description", name: "video_description", widget: "text"}
+
+  - name: "episodes"
+    label: "Episodes"
+    folder: "content/episodes"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "YouTube Video URL", name: "video_url", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "content/about.yml"
+        fields:
+          - {label: "Content", name: "content", widget: "markdown"}
+      
+      - label: "Information Page"
+        name: "information"
+        file: "content/information.yml"
+        fields:
+          - {label: "Content", name: "content", widget: "markdown"}
