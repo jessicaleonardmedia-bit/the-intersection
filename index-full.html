@@ -3,280 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Intersection - Look Both Ways</title>
-    
-    <!-- Google Fonts -->
+    <title>The Intersection - Coming Soon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Overpass:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
-<body>
-    <!-- Skip to main content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <div class="nav-brand" onclick="showPage('home')" role="button" tabindex="0" onkeypress="if(event.key==='Enter') showPage('home')">
-                <!-- Add your logo here - replace the emoji with an <img> tag -->
-                <span class="tv-icon" aria-hidden="true">📺</span>
-                <span class="brand-name">The Intersection</span>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span aria-hidden="true">☰</span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" onclick="showPage('home'); return false;">Home</a></li>
-                <li><a href="#about" onclick="showPage('about'); return false;">About</a></li>
-                <li><a href="#videos" onclick="showPage('videos'); return false;">Videos</a></li>
-                <li><a href="#contact" onclick="showPage('contact'); return false;">Contact</a></li>
-                <li><a href="#information" onclick="showPage('information'); return false;">Information</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Home Page -->
-        <div id="home" class="page active">
-            <div class="hero">
-                <div class="hero-content">
-                    <h1>The Intersection</h1>
-                    <p class="tagline">Look Both Ways</p>
-                    <p class="hero-description">Your local community stories, perspectives, and voices</p>
-                </div>
-            </div>
-
-            <section class="container" aria-labelledby="featured-heading">
-                <h2 id="featured-heading" class="section-title">Featured Episode</h2>
-                <div class="featured-video">
-                    <div class="video-placeholder">
-                        <!-- Replace this div with your YouTube embed code -->
-                        <p>YouTube video embed goes here</p>
-                        <p class="tip">To add a video: Replace this entire div with YouTube's embed code from the "Share" → "Embed" option</p>
-                    </div>
-                </div>
-                <p class="video-description">Latest episode description and details</p>
-            </section>
-
-            <section class="social-section" aria-labelledby="social-heading">
-                <div class="container">
-                    <h2 id="social-heading" class="section-title">Follow Us</h2>
-                    <div class="social-scroll" role="list">
-                        <div class="social-card" role="listitem">
-                            <div class="social-placeholder" aria-label="Social media post 1">Social media embed 1</div>
-                            <p>Recent post from our social channels</p>
-                        </div>
-                        <div class="social-card" role="listitem">
-                            <div class="social-placeholder" aria-label="Social media post 2">Social media embed 2</div>
-                            <p>Recent post from our social channels</p>
-                        </div>
-                        <div class="social-card" role="listitem">
-                            <div class="social-placeholder" aria-label="Social media post 3">Social media embed 3</div>
-                            <p>Recent post from our social channels</p>
-                        </div>
-                        <div class="social-card" role="listitem">
-                            <div class="social-placeholder" aria-label="Social media post 4">Social media embed 4</div>
-                            <p>Recent post from our social channels</p>
-                        </div>
-                        <div class="social-card" role="listitem">
-                            <div class="social-placeholder" aria-label="Social media post 5">Social media embed 5</div>
-                            <p>Recent post from our social channels</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- About Page -->
-        <div id="about" class="page">
-            <article class="container content-page">
-                <h1>About The Intersection</h1>
-                <div class="content">
-                    <p>The Intersection is a community television show that brings local stories, perspectives, and voices to the forefront. We believe in the power of diverse viewpoints and the importance of looking at issues from multiple angles.</p>
-                    
-                    <p>Our tagline "Look Both Ways" embodies our commitment to presenting balanced, thoughtful coverage of the topics that matter to our community.</p>
-                    
-                    <h2>Our Mission</h2>
-                    <p>To create meaningful dialogue and connection within our community through authentic storytelling and inclusive programming.</p>
-                </div>
-            </article>
-        </div>
-
-        <!-- Videos Page -->
-        <div id="videos" class="page">
-            <section class="container content-page" aria-labelledby="episodes-heading">
-                <h1 id="episodes-heading">Episodes</h1>
-                <div class="video-grid" role="list">
-                    <article class="video-card" role="listitem">
-                        <div class="video-thumbnail" aria-label="Episode 1 thumbnail">Episode 1 - YouTube embed</div>
-                        <div class="video-info">
-                            <h3>Episode Title 1</h3>
-                            <p>Episode description and date will appear here.</p>
-                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
-                        </div>
-                    </article>
-                    <article class="video-card" role="listitem">
-                        <div class="video-thumbnail" aria-label="Episode 2 thumbnail">Episode 2 - YouTube embed</div>
-                        <div class="video-info">
-                            <h3>Episode Title 2</h3>
-                            <p>Episode description and date will appear here.</p>
-                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
-                        </div>
-                    </article>
-                    <article class="video-card" role="listitem">
-                        <div class="video-thumbnail" aria-label="Episode 3 thumbnail">Episode 3 - YouTube embed</div>
-                        <div class="video-info">
-                            <h3>Episode Title 3</h3>
-                            <p>Episode description and date will appear here.</p>
-                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
-                        </div>
-                    </article>
-                    <article class="video-card" role="listitem">
-                        <div class="video-thumbnail" aria-label="Episode 4 thumbnail">Episode 4 - YouTube embed</div>
-                        <div class="video-info">
-                            <h3>Episode Title 4</h3>
-                            <p>Episode description and date will appear here.</p>
-                            <a href="#" class="watch-btn">Watch Now <span aria-hidden="true">→</span></a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contact Page -->
-        <div id="contact" class="page">
-            <section class="container content-page" aria-labelledby="contact-heading">
-                <h1 id="contact-heading">Contact Us</h1>
-                <div class="contact-form">
-                    <div class="form-group">
-                        <label for="contactName">Name <span class="required" aria-label="required">*</span></label>
-                        <input type="text" id="contactName" name="name" placeholder="Your name" required aria-required="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="contactEmail">Email <span class="required" aria-label="required">*</span></label>
-                        <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required aria-required="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="contactMessage">Message <span class="required" aria-label="required">*</span></label>
-                        <textarea id="contactMessage" name="message" rows="5" placeholder="Your message..." required aria-required="true"></textarea>
-                    </div>
-                    <button type="button" class="submit-btn" onclick="handleContact()">Send Message</button>
-                </div>
-            </section>
-        </div>
-
-        <!-- Information Page -->
-        <div id="information" class="page">
-            <article class="container content-page">
-                <h1>Information</h1>
-                <div class="content">
-                    <div class="info-box">
-                        <h2>Broadcast Schedule</h2>
-                        <p>Check your local listings for air times.</p>
-                    </div>
-                    
-                    <h2>How to Watch</h2>
-                    <p>Tune in to our show on your local community television channel, or watch episodes on our Videos page at any time.</p>
-                    
-                    <h2>Get Involved</h2>
-                    <p>Interested in being featured on The Intersection or have a story idea? We'd love to hear from you! Visit our Contact page to get in touch.</p>
-                    
-                    <h2>Community Partners</h2>
-                    <p>Information about partnerships and sponsors can be added here.</p>
-                </div>
-            </article>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="container">
-            <p>© 2026 The Intersection. All rights reserved.</p>
-            <p class="footer-tagline">Look Both Ways</p>
-        </div>
-    </footer>
-
-    <script>
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            const selectedPage = document.getElementById(pageId);
-            selectedPage.classList.add('active');
-            
-            // Update page title
-            const pageTitles = {
-                'home': 'Home',
-                'about': 'About',
-                'videos': 'Episodes',
-                'contact': 'Contact',
-                'information': 'Information'
-            };
-            document.title = `The Intersection - ${pageTitles[pageId]}`;
-            
-            // Close mobile menu
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.remove('active');
-            document.querySelector('.mobile-menu-btn').setAttribute('aria-expanded', 'false');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-            
-            // Focus on main content for screen readers
-            selectedPage.focus();
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Overpass:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            const isExpanded = navMenu.classList.toggle('active');
-            menuBtn.setAttribute('aria-expanded', isExpanded);
+        html {
+            scroll-behavior: smooth;
         }
 
-        function handleContact() {
-            const name = document.getElementById('contactName').value.trim();
-            const email = document.getElementById('contactEmail').value.trim();
-            const message = document.getElementById('contactMessage').value.trim();
-            
-            if (name && email && message) {
-                alert('Thank you for your message! We will get back to you soon.');
-                document.getElementById('contactName').value = '';
-                document.getElementById('contactEmail').value = '';
-                document.getElementById('contactMessage').value = '';
-            } else {
-                alert('Please fill in all required fields.');
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section - Full Screen */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('host_promo_intersection_2025.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 3rem;
+            position: relative;
+        }
+
+        /* Mobile background image */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-image: url('host_promo_website_vertical.png');
             }
         }
 
-        // Accessibility: Allow Enter key to trigger navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        this.click();
-                    }
-                });
-            });
-        });
-    </script>
+        /* Logo - Top Left */
+        .hero-content {
+            position: absolute;
+            top: 3rem;
+            left: 3rem;
+            z-index: 1;
+        }
+
+        .logo-image {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 1));
+        }
+
+        /* Announcement Box - Bottom Right */
+        .announcement {
+            position: absolute;
+            bottom: 3rem;
+            right: 3rem;
+            background: #fe05b5;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.4;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            z-index: 1;
+            cursor: pointer;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('intersection_lockup_pink.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        /* Optional: Add overlay for better readability */
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-container h2 {
+            font-family: 'Overpass', sans-serif;
+            font-size: 2.5rem;
+            color: #1F2937;
+            margin-bottom: 1rem;
+        }
+
+        .contact-container p {
+            font-size: 1.1rem;
+            color: #4B5563;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #6B9BD1;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #FF1493;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #C71585;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            background: #00FF7F;
+            color: #1F2937;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem;
+            }
+
+            .hero-content {
+                top: 2rem;
+                left: 2rem;
+            }
+
+            .logo-image {
+                max-width: 140px;
+            }
+
+            .announcement {
+                bottom: 2rem;
+                right: 2rem;
+                font-size: 1rem;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .contact-container {
+                padding: 2rem;
+            }
+
+            .contact-container h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-indicator {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Logo - Top Left -->
+        <div class="hero-content">
+            <img src="intersection_logo_temp.png" alt="The Intersection - Look Both Ways" class="logo-image">
+        </div>
+
+        <!-- Announcement - Bottom Right -->
+        <div class="announcement">
+            Coming Soon
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" aria-label="Scroll down for contact form">
+            ↓
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Get in Touch</h2>
+            <p>Want to stay in the loop? Drop us a message below.</p>
+
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" rows="4"></textarea>
+                </div>
+                <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
+                <div class="success-message" id="successMessage">
+                    Thanks! We'll be in touch soon.
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
+        function handleSubmit() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (name && email) {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Clear form
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            } else {
+                alert('Please fill in your name and email.');
+            }
+        }
     </script>
 </body>
 </html>
