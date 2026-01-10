@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Overpass:wght@700;800&display=swap" rel="stylesheet">
     <style>
+        /* iPhone viewport fix */
+        html {
+            height: -webkit-fill-available;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -27,12 +32,14 @@
         /* Hero Section - Full Screen */
         .hero-section {
             min-height: 100vh;
+            min-height: -webkit-fill-available;
             display: flex;
             flex-direction: column;
             background-image: url('host_promo_intersection_2025.jpg');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
             padding: 3rem;
             position: relative;
         }
@@ -97,13 +104,15 @@
         /* Contact Section */
         .contact-section {
             min-height: 100vh;
+            min-height: -webkit-fill-available;
             display: flex;
             align-items: center;
             justify-content: center;
             background-image: url('intersection_lockup_pink.png');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
             padding: 4rem 2rem;
             position: relative;
         }
@@ -212,8 +221,13 @@
             font-weight: 600;
         }
 
+        /* Mobile Styles - iPhone Safe */
         @media (max-width: 768px) {
             .hero-section {
+                background-image: url('host_promo_website_vertical.png');
+                background-attachment: scroll;
+                background-position: center center;
+                background-size: cover;
                 padding: 2rem;
             }
 
