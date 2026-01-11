@@ -35,6 +35,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-color: #f0f0f0;
             padding: 3rem;
             position: relative;
             overflow: hidden;
@@ -207,10 +208,15 @@
             transform: translateY(0);
         }
 
-        /* Tablet - keep desktop image but adjust layout */
-        @media (max-width: 1024px) and (min-width: 769px) {
+        /* Small adjustments for medium screens - KEEP DESKTOP IMAGE */
+        @media (max-width: 1024px) {
             .hero-section {
                 padding: 2.5rem;
+            }
+
+            .hero-content {
+                top: 2.5rem;
+                left: 2.5rem;
             }
 
             .logo-image {
@@ -218,13 +224,15 @@
             }
 
             .announcement {
+                bottom: 2.5rem;
+                right: 2.5rem;
                 font-size: 1rem;
                 padding: 0.9rem 1.3rem;
             }
         }
 
-        /* Mobile Styles - Switch to vertical image */
-        @media (max-width: 768px) {
+        /* Mobile Styles ONLY - Switch to vertical image at actual phone size */
+        @media (max-width: 480px) {
             .hero-section {
                 background-image: url('host_promo_website_vertical.png');
                 padding: 2rem;
