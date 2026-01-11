@@ -114,7 +114,6 @@
             position: relative;
         }
 
-        /* Optional: Add overlay for better readability */
         .contact-section::before {
             content: '';
             position: absolute;
@@ -208,7 +207,61 @@
             transform: translateY(0);
         }
 
-        /* Small adjustments for medium screens - KEEP DESKTOP IMAGE */
+        .submit-btn:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #00FF7F 0%, #00CC66 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+            animation: slideIn 0.5s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message p {
+            color: white;
+            margin-bottom: 0;
+        }
+
+        .checkmark {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hidden form state */
+        .contact-form.hidden {
+            display: none;
+        }
+
+        /* Small adjustments for medium screens */
         @media (max-width: 1024px) {
             .hero-section {
                 padding: 2.5rem;
@@ -231,7 +284,7 @@
             }
         }
 
-        /* Mobile Styles ONLY - Switch to vertical image at actual phone size */
+        /* Mobile Styles */
         @media (max-width: 480px) {
             .hero-section {
                 background-image: url('host_promo_website_vertical.png');
@@ -296,17 +349,14 @@
 <body>
     <!-- Hero Section -->
     <section class="hero-section">
-        <!-- Logo - Top Left -->
         <div class="hero-content">
             <img src="intersection_logo_temp.png" alt="The Intersection - Look Both Ways" class="logo-image">
         </div>
 
-        <!-- Announcement - Bottom Right -->
         <div class="announcement">
             Coming Soon
         </div>
 
-        <!-- Scroll Indicator -->
         <div class="scroll-indicator" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" aria-label="Scroll down for contact form">
             ↓
         </div>
@@ -316,10 +366,9 @@
     <section id="contact" class="contact-section">
         <div class="contact-container">
             <h2>Get in Touch</h2>
-            <p>Want to stay in the loop? Drop us a message below.</p>
+            <p id="contactDescription">Want to stay in the loop? Drop us a message below.</p>
 
-            <form name="contact" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field" class="contact-form">
-                <!-- Hidden fields for Netlify -->
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
                 <input type="hidden" name="form-name" value="contact">
                 <p style="display: none;">
                     <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -337,9 +386,54 @@
                     <label for="message">Message (Optional)</label>
                     <textarea id="message" name="message" rows="4"></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
             </form>
+
+            <div class="success-message" id="successMessage">
+                <div class="checkmark">✓</div>
+                <h3>Thank You!</h3>
+                <p>We've received your message and will get back to you soon.</p>
+            </div>
         </div>
     </section>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            
+            try {
+                // Submit to Netlify
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                });
+                
+                if (response.ok) {
+                    // Hide form and show success message
+                    form.classList.add('hidden');
+                    successMessage.classList.add('show');
+                    document.getElementById('contactDescription').style.display = 'none';
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                alert('Oops! Something went wrong. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        });
+    </script>
 </body>
 </html>
