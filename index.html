@@ -214,36 +214,41 @@
         }
 
         /* Success Message */
-        .success-message {
-            display: none;
-            background: linear-gradient(135deg, #00FF7F 0%, #00CC66 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-            text-align: center;
-            animation: slideIn 0.5s ease;
-        }
+.success-message {
+    display: none;
+    background: #ffca05;
+    color: black;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+    margin-top: 2rem;
+    text-align: center;
+    animation: slideIn 0.5s ease;
+}
 
-        .success-message.show {
-            display: block;
-        }
+.success-message.show {
+    display: block;
+}
 
-        .success-message h3 {
-            font-family: 'Overpass', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
+.success-message h3 {
+    font-family: 'Overpass', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: black;
+}
 
-        .success-message p {
-            color: white;
-            margin-bottom: 0;
-        }
+.success-message p {
+    color: black;
+    margin-bottom: 0;
+    font-family: 'Overpass', sans-serif;
+}
 
-        .checkmark {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
+.checkmark {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: black;
+}
 
         @keyframes slideIn {
             from {
