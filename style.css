@@ -17,8 +17,8 @@
     --color-border-light: #E5E7EB;
     --color-black: #000000;
     --color-pale-green: #cdffdb;
-    --color-info-green: #14612b;
     --color-pale-blue: #ccd7ff;
+    --color-form-cream: #FFF7CE;
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -133,7 +133,7 @@ h3 {
     font-weight: 700;
     font-family: var(--font-heading);
     cursor: pointer;
-    color: var(--color-white);
+    color: var(--color-dark-gray);
     transition: opacity 0.3s ease;
 }
 
@@ -144,17 +144,17 @@ h3 {
 .mobile-menu-btn {
     display: none;
     background: none;
-    border: 2px solid var(--color-white);
+    border: 2px solid var(--color-dark-gray);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 4px;
-    color: var(--color-white);
+    color: var(--color-dark-gray);
     transition: all 0.3s ease;
 }
 
 .mobile-menu-btn:hover {
-    background: var(--color-white);
+    background: var(--color-dark-gray);
     color: var(--color-purple-nav);
 }
 
@@ -166,7 +166,7 @@ h3 {
 
 .nav-menu a {
     text-decoration: none;
-    color: var(--color-white);
+    color: var(--color-dark-gray);
     font-weight: 500;
     padding: 0.5rem 0;
     border-bottom: 3px solid transparent;
@@ -175,7 +175,7 @@ h3 {
 
 .nav-menu a:hover,
 .nav-menu a:focus {
-    border-bottom-color: var(--color-yellow);
+    border-bottom-color: var(--color-pink-bright);
 }
 
 /* ===================================
@@ -192,6 +192,36 @@ h3 {
 
 .page:focus {
     outline: none;
+}
+
+/* ===================================
+   COLOR BAND HEADINGS
+   =================================== */
+
+.color-band-heading {
+    background: var(--color-pink-bright);
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    margin-left: calc(-1 * var(--spacing-lg));
+    margin-right: calc(-1 * var(--spacing-lg));
+    width: calc(100% + 2 * var(--spacing-lg));
+}
+
+.color-band-heading h1,
+.color-band-heading h2 {
+    color: var(--color-white);
+    font-weight: 900;
+    margin: 0;
+}
+
+.color-band-heading.contact-band {
+    background: var(--color-yellow);
+}
+
+.color-band-heading.contact-band h1 {
+    color: var(--color-dark-gray);
 }
 
 /* ===================================
@@ -255,7 +285,7 @@ h3 {
 }
 
 /* ===================================
-   SECTION HEADING BOXES
+   SECTION HEADING BOXES (deprecated - now using color bands)
    =================================== */
 
 .section-heading-box {
@@ -331,13 +361,33 @@ h3 {
 }
 
 .video-caption-box {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-button {
     background: var(--color-white);
-    padding: 1rem;
+    color: var(--color-dark-gray);
+    padding: 1rem 2rem;
     border-radius: 12px;
     border: 2px solid var(--color-black);
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
-    max-width: 600px;
-    margin: 0 auto;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+.video-button:hover,
+.video-button:focus {
+    background: var(--color-pink-bright);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
 }
 
 .video-description {
@@ -495,7 +545,7 @@ h3 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
 }
 
 .vm-box {
@@ -512,7 +562,15 @@ h3 {
     color: var(--color-magenta);
 }
 
-.values-section h3 {
+.values-box {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--color-black);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+}
+
+.values-box h3 {
     text-align: center;
     margin-bottom: var(--spacing-md);
     color: var(--color-magenta);
@@ -567,7 +625,7 @@ h3 {
 
 /* Supporters Section */
 .supporters-section {
-    background: var(--color-pale-green);
+    background: var(--color-pale-blue);
 }
 
 .supporters-heading {
@@ -610,7 +668,7 @@ h3 {
 }
 
 .supporters-list a {
-    color: var(--color-blue-soft);
+    color: var(--color-dark-gray);
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: color 0.3s ease;
@@ -686,22 +744,6 @@ h3 {
     background-size: cover;
     background-position: center;
     min-height: 100vh;
-}
-
-.contact-heading-box {
-    background: var(--color-yellow);
-    border: 2px solid var(--color-black);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
-    text-align: center;
-    margin: 0 auto var(--spacing-xl);
-    max-width: fit-content;
-}
-
-.contact-heading-box h1 {
-    margin: 0;
-    color: var(--color-black);
 }
 
 .contact-form {
@@ -798,22 +840,6 @@ h3 {
     min-height: 100vh;
 }
 
-.info-title-box {
-    background: var(--color-info-green);
-    border: 2px solid var(--color-black);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-}
-
-.info-title-box h1 {
-    margin: 0;
-    color: var(--color-white);
-    font-weight: 900;
-}
-
 .info-content-box {
     background: var(--color-white);
     padding: 2.5rem;
@@ -860,6 +886,11 @@ h3 {
 }
 
 .involvement-intro {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--color-black);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
     margin-bottom: var(--spacing-xl);
 }
 
@@ -869,11 +900,17 @@ h3 {
 }
 
 .involvement-form {
-    background: var(--color-white);
+    background: var(--color-form-cream);
     padding: 2rem;
     border-radius: 12px;
     border: 2px solid var(--color-black);
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+}
+
+.involvement-form .form-group label,
+.involvement-form h3,
+.involvement-form h4 {
+    color: var(--color-dark-gray);
 }
 
 .form-section-title {
@@ -987,7 +1024,7 @@ footer p {
 
     .nav-menu a {
         padding: var(--spacing-sm);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(31, 41, 55, 0.2);
     }
 
     .hero-image {
@@ -1019,6 +1056,12 @@ footer p {
 
     .episode-grid {
         grid-template-columns: 1fr;
+    }
+
+    .color-band-heading {
+        margin-left: calc(-1 * var(--spacing-sm));
+        margin-right: calc(-1 * var(--spacing-sm));
+        width: calc(100% + 2 * var(--spacing-sm));
     }
 }
 
