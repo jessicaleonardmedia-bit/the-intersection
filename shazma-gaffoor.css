@@ -302,69 +302,99 @@ a {
     color: var(--color-slate);
 }
 
-/* Education Highlight in About */
-.education-highlight {
-    margin-top: var(--space-xl);
+/* Education Section - Compact */
+.education-section {
+    margin-top: var(--space-2xl);
     padding-top: var(--space-xl);
     border-top: 1px solid var(--color-border);
 }
 
-.education-highlight h3 {
-    font-size: 1.75rem;
-    margin-bottom: var(--space-lg);
-    color: var(--color-charcoal);
-    font-weight: 600;
+.education-compact {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.education-highlight .education-item {
+.education-compact .education-item {
     margin-bottom: var(--space-lg);
 }
 
-.education-highlight h4 {
+.education-compact h3 {
     font-size: 1.35rem;
     margin-bottom: var(--space-xs);
     font-weight: 600;
     color: var(--color-charcoal);
 }
 
-.education-highlight .detail {
+.education-compact .institution {
+    font-family: var(--font-secondary);
     font-size: 1rem;
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+}
+
+.education-compact .detail {
+    font-size: 0.95rem;
     color: var(--color-slate);
-    margin-bottom: var(--space-sm);
     font-style: italic;
 }
 
-.education-highlight .achievements {
-    list-style: none;
+.awards-compact {
     margin-top: var(--space-md);
+    margin-bottom: var(--space-lg);
 }
 
-.education-highlight .achievements li {
-    padding: var(--space-xs) 0;
-    padding-left: var(--space-md);
-    position: relative;
-    color: var(--color-slate);
-    font-size: 1rem;
+.award-item {
+    font-size: 0.95rem;
     line-height: 1.7;
+    color: var(--color-slate);
+    margin-bottom: var(--space-sm);
 }
 
-.education-highlight .achievements li::before {
-    content: '◆';
-    position: absolute;
-    left: 0;
-    color: var(--color-sage);
-    font-size: 0.7rem;
+.award-item strong {
+    color: var(--color-charcoal);
+    font-weight: 600;
+}
+
+.award-item a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: all 0.3s ease;
+}
+
+.award-item a:hover {
+    color: var(--color-terracotta);
+    text-decoration-thickness: 2px;
+}
+
+.additional-qualifications {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.additional-qualifications p {
+    font-size: 0.95rem;
+    color: var(--color-slate);
+    margin-bottom: var(--space-xs);
+}
+
+.additional-qualifications strong {
+    color: var(--color-charcoal);
+    font-weight: 600;
 }
 
 /* Portfolio Section */
 .portfolio-intro {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     color: var(--color-slate);
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
     text-align: center;
-    max-width: 700px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-style: italic;
 }
 
 .portfolio-container-scroll {
@@ -427,6 +457,13 @@ a {
     justify-content: center;
     position: relative;
     overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .card-overlay {
@@ -628,8 +665,9 @@ a {
         font-size: 1.2rem;
     }
 
-    .education-highlight .achievements li {
-        font-size: 0.95rem;
+    /* Education compact mobile */
+    .award-item {
+        font-size: 0.9rem;
     }
 }
 
