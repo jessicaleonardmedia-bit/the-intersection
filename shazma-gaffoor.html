@@ -243,23 +243,67 @@
             </div>
         </section>
 
-        <!-- Featured Publication Section -->
+        <!-- Featured Publications Section -->
         <section class="featured-publication-section">
             <div class="section-inner">
-                <h2 class="section-heading">Featured Publication</h2>
-                <p class="portfolio-intro">Recent feature in Al Wasat Magazine, June 2025 issue (pages 4-5).</p>
+                <h2 class="section-heading">Featured Publications</h2>
+                <p class="portfolio-intro">Articles published in Al Wasat Magazine.</p>
                 
-                <div class="issuu-embed-container">
-                    <div style="position: relative; padding-bottom: 70.71%; height: 0; overflow: hidden; max-width: 100%;">
-                        <iframe 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                            src="https://e.issuu.com/embed.html?d=june_2025_&u=alwasat2011&p=4" 
-                            frameborder="0" 
-                            allowfullscreen
-                            title="Al Wasat Magazine - June 2025">
-                        </iframe>
+                <div class="magazines-container-scroll">
+                    <button class="nav-arrow nav-arrow-left" aria-label="Previous magazine" onclick="scrollMagazines(-1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <div class="magazines-scroll" id="magazinesScroll">
+                        <!-- Magazine 1 - June 2025 -->
+                        <div class="magazine-card">
+                            <div class="magazine-info">
+                                <h3 class="magazine-title">Al Wasat Magazine</h3>
+                                <p class="magazine-meta">June 2025 • Pages 4-5</p>
+                            </div>
+                            <div class="issuu-embed-container">
+                                <div style="position: relative; padding-bottom: 70.71%; height: 0; overflow: hidden; max-width: 100%;">
+                                    <iframe 
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                                        src="https://e.issuu.com/embed.html?d=june_2025_&u=alwasat2011&p=4" 
+                                        frameborder="0" 
+                                        allowfullscreen
+                                        title="Al Wasat Magazine - June 2025">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Magazine 2 - January 2026 -->
+                        <div class="magazine-card">
+                            <div class="magazine-info">
+                                <h3 class="magazine-title">Al Wasat Magazine</h3>
+                                <p class="magazine-meta">January 2026 • Page 24</p>
+                            </div>
+                            <div class="issuu-embed-container">
+                                <div style="position: relative; padding-bottom: 70.71%; height: 0; overflow: hidden; max-width: 100%;">
+                                    <iframe 
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                                        src="https://e.issuu.com/embed.html?d=january_2026_&u=alwasat2011&p=24" 
+                                        frameborder="0" 
+                                        allowfullscreen
+                                        title="Al Wasat Magazine - January 2026">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <button class="nav-arrow nav-arrow-right" aria-label="Next magazine" onclick="scrollMagazines(1)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
+                
+                <div class="scroll-indicators" id="magazineIndicators"></div>
             </div>
         </section>
 
@@ -358,6 +402,73 @@
                     scrollPortfolio(1); // Swipe left, scroll right
                 } else {
                     scrollPortfolio(-1); // Swipe right, scroll left
+                }
+            }
+        }
+
+        // Magazine carousel functionality
+        const magazinesScroll = document.getElementById('magazinesScroll');
+        const magazineIndicatorsContainer = document.getElementById('magazineIndicators');
+        
+        // Create scroll indicators for magazines
+        const magazineCards = document.querySelectorAll('.magazine-card');
+        magazineCards.forEach((card, index) => {
+            const indicator = document.createElement('button');
+            indicator.className = 'scroll-indicator';
+            indicator.setAttribute('aria-label', `Go to magazine ${index + 1}`);
+            indicator.onclick = () => scrollToMagazine(index);
+            magazineIndicatorsContainer.appendChild(indicator);
+        });
+        
+        function updateMagazineIndicators() {
+            const scrollLeft = magazinesScroll.scrollLeft;
+            const cardWidth = magazineCards[0].offsetWidth + 32; // card width + gap
+            const currentIndex = Math.round(scrollLeft / cardWidth);
+            
+            document.querySelectorAll('#magazineIndicators .scroll-indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        function scrollMagazines(direction) {
+            const cardWidth = magazineCards[0].offsetWidth + 32; // card width + gap
+            const scrollAmount = cardWidth * direction;
+            magazinesScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+        
+        function scrollToMagazine(index) {
+            const cardWidth = magazineCards[0].offsetWidth + 32;
+            magazinesScroll.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+        }
+        
+        // Update indicators on scroll
+        magazinesScroll.addEventListener('scroll', updateMagazineIndicators);
+        
+        // Initialize indicators
+        updateMagazineIndicators();
+        
+        // Touch swipe support for magazines
+        let magazineTouchStartX = 0;
+        let magazineTouchEndX = 0;
+        
+        magazinesScroll.addEventListener('touchstart', (e) => {
+            magazineTouchStartX = e.changedTouches[0].screenX;
+        });
+        
+        magazinesScroll.addEventListener('touchend', (e) => {
+            magazineTouchEndX = e.changedTouches[0].screenX;
+            handleMagazineSwipe();
+        });
+        
+        function handleMagazineSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = magazineTouchStartX - magazineTouchEndX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    scrollMagazines(1); // Swipe left, scroll right
+                } else {
+                    scrollMagazines(-1); // Swipe right, scroll left
                 }
             }
         }
