@@ -582,7 +582,10 @@ a {
     border-radius: 4px;
 }
 
-/* Featured Publication Section */
+/* ===================================
+   FEATURED PUBLICATIONS SECTION
+   =================================== */
+
 .featured-publication-section {
     margin-top: var(--space-2xl);
     padding-top: var(--space-xl);
@@ -616,9 +619,18 @@ a {
 }
 
 .magazine-card {
-    flex: 0 0 calc(100% - 6rem);
+    flex: 0 0 600px;
     scroll-snap-align: center;
-    transition: transform 0.3s ease;
+    background: var(--color-warm-white);
+    border-radius: 8px;
+    padding: var(--space-lg);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.magazine-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .magazine-info {
@@ -629,13 +641,13 @@ a {
 .magazine-title {
     font-size: 1.5rem;
     margin-bottom: var(--space-xs);
-    font-weight: 600;
     color: var(--color-charcoal);
+    font-weight: 600;
 }
 
 .magazine-meta {
     font-family: var(--font-secondary);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -643,12 +655,167 @@ a {
 }
 
 .issuu-embed-container {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.issuu-embed-container iframe {
+    display: block;
+}
+
+/* ===================================
+   ADVOCACY SECTION
+   =================================== */
+
+.advocacy-section {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.advocacy-intro {
+    font-size: 0.95rem;
+    color: var(--color-slate);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+    font-style: italic;
+}
+
+/* Featured Podcast */
+.advocacy-featured {
+    max-width: 700px;
+    margin: 0 auto var(--space-2xl);
+    text-align: center;
+}
+
+.feature-label {
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+}
+
+.podcast-embed {
+    background: var(--color-warm-white);
+    padding: var(--space-lg);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--color-border);
+}
+
+.podcast-embed iframe {
+    margin: 0 auto;
+    display: block;
+}
+
+/* Articles Grid */
+.advocacy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-xl);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.advocacy-card {
     background: var(--color-warm-white);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 
-        0 2px 8px rgba(0, 0, 0, 0.08),
-        0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.advocacy-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.advocacy-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.advocacy-image {
+    width: 100%;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    background: var(--color-border);
+}
+
+.advocacy-image-portrait {
+    height: 320px;
+}
+
+.advocacy-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.advocacy-link:hover .advocacy-img {
+    transform: scale(1.05);
+}
+
+.advocacy-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(43, 43, 43, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.advocacy-link:hover .advocacy-overlay {
+    opacity: 1;
+}
+
+.read-article {
+    color: white;
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.advocacy-content {
+    padding: var(--space-lg);
+}
+
+.advocacy-meta {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+
+.advocacy-title {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    margin-bottom: var(--space-sm);
+    color: var(--color-charcoal);
+    font-weight: 600;
+}
+
+.advocacy-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-slate);
+    margin: 0;
 }
 
 /* ===================================
@@ -739,13 +906,31 @@ a {
         font-size: 0.9rem;
     }
 
-    /* Magazine carousel mobile */
+    /* Advocacy mobile */
+    .advocacy-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .podcast-embed {
+        padding: var(--space-md);
+    }
+
+    .advocacy-image-portrait {
+        height: 280px;
+    }
+
+    .advocacy-title {
+        font-size: 1.2rem;
+    }
+
+    /* Featured Publications mobile */
     .magazines-scroll {
         margin: 0 2rem;
     }
 
     .magazine-card {
-        flex: 0 0 calc(100% - 4rem);
+        flex: 0 0 500px;
     }
 
     .magazine-title {
@@ -809,13 +994,40 @@ a {
         font-size: 0.95rem;
     }
 
-    /* Magazine carousel extra small */
+    /* Advocacy extra small */
+    .podcast-embed {
+        padding: var(--space-sm);
+    }
+
+    .advocacy-content {
+        padding: var(--space-md);
+    }
+
+    .advocacy-image {
+        height: 200px;
+    }
+
+    .advocacy-image-portrait {
+        height: 240px;
+    }
+
+    .advocacy-title {
+        font-size: 1.1rem;
+    }
+
+    .advocacy-description {
+        font-size: 0.95rem;
+    }
+
+    /* Featured Publications extra small */
     .magazines-scroll {
         margin: 0 1rem;
+        gap: 1.5rem;
     }
 
     .magazine-card {
-        flex: 0 0 calc(100% - 2rem);
+        flex: 0 0 90vw;
+        padding: var(--space-md);
     }
 
     .magazine-title {
