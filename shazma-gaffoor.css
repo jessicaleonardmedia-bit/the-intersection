@@ -767,6 +767,11 @@ a {
     object-position: top center;
 }
 
+/* Anchor specific landscape images at the top */
+.advocacy-image-top .advocacy-img {
+    object-position: top center;
+}
+
 .advocacy-link:hover .advocacy-img {
     transform: scale(1.05);
 }
