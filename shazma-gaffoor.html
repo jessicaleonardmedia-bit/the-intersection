@@ -22,15 +22,6 @@
                     </div>
                 </div>
                 
-                <!-- ===================================
-   UPDATED CONTACT SECTION FOR shazma-gaffoor.html
-   
-   INSTRUCTIONS:
-   Find the contact-section div (around line 25-43)
-   Replace the entire <div class="contact-section"> ... </div>
-   with the code below
-   =================================== -->
-
                 <div class="contact-section">
                     <h1 class="name">Shazma Gaffoor</h1>
                     <p class="title">Journalist</p>
@@ -43,7 +34,7 @@
                             </p>
                             <p class="contact-static-item">
                                 <span class="contact-label">Email</span>
-                                <span class="contact-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91e2f9f0ebfcf0bff6f0f7f7fefee3d1f6fcf0f8fdbff2fefc">[email&#160;protected]</a></span>
+                                <span class="contact-value">shazma.gaffoor@gmail.com</span>
                             </p>
                         </div>
                         
@@ -767,6 +758,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Footer -->
         <footer class="portfolio-footer">
             <div class="footer-content">
@@ -776,7 +768,7 @@
         </footer>
     </main>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Portfolio scroll functionality
         const portfolioScroll = document.getElementById('portfolioScroll');
         const indicatorsContainer = document.getElementById('scrollIndicators');
@@ -793,7 +785,7 @@
         
         function updateIndicators() {
             const scrollLeft = portfolioScroll.scrollLeft;
-            const cardWidth = cards[0].offsetWidth + 32; // card width + gap
+            const cardWidth = cards[0].offsetWidth + 32;
             const currentIndex = Math.round(scrollLeft / cardWidth);
             
             document.querySelectorAll('.scroll-indicator').forEach((indicator, index) => {
@@ -802,7 +794,7 @@
         }
         
         function scrollPortfolio(direction) {
-            const cardWidth = cards[0].offsetWidth + 32; // card width + gap
+            const cardWidth = cards[0].offsetWidth + 32;
             const scrollAmount = cardWidth * direction;
             portfolioScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
@@ -812,13 +804,9 @@
             portfolioScroll.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
         }
         
-        // Update indicators on scroll
         portfolioScroll.addEventListener('scroll', updateIndicators);
-        
-        // Initialize indicators
         updateIndicators();
         
-        // Touch swipe support for mobile
         let touchStartX = 0;
         let touchEndX = 0;
         
@@ -837,9 +825,9 @@
             
             if (Math.abs(swipeDistance) > swipeThreshold) {
                 if (swipeDistance > 0) {
-                    scrollPortfolio(1); // Swipe left, scroll right
+                    scrollPortfolio(1);
                 } else {
-                    scrollPortfolio(-1); // Swipe right, scroll left
+                    scrollPortfolio(-1);
                 }
             }
         }
@@ -848,7 +836,6 @@
         const magazinesScroll = document.getElementById('magazinesScroll');
         const magazineIndicatorsContainer = document.getElementById('magazineIndicators');
         
-        // Create scroll indicators for magazines
         const magazineCards = document.querySelectorAll('.magazine-card');
         magazineCards.forEach((card, index) => {
             const indicator = document.createElement('button');
@@ -860,7 +847,7 @@
         
         function updateMagazineIndicators() {
             const scrollLeft = magazinesScroll.scrollLeft;
-            const cardWidth = magazineCards[0].offsetWidth + 32; // card width + gap
+            const cardWidth = magazineCards[0].offsetWidth + 32;
             const currentIndex = Math.round(scrollLeft / cardWidth);
             
             document.querySelectorAll('#magazineIndicators .scroll-indicator').forEach((indicator, index) => {
@@ -869,7 +856,7 @@
         }
         
         function scrollMagazines(direction) {
-            const cardWidth = magazineCards[0].offsetWidth + 32; // card width + gap
+            const cardWidth = magazineCards[0].offsetWidth + 32;
             const scrollAmount = cardWidth * direction;
             magazinesScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
@@ -879,13 +866,9 @@
             magazinesScroll.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
         }
         
-        // Update indicators on scroll
         magazinesScroll.addEventListener('scroll', updateMagazineIndicators);
-        
-        // Initialize indicators
         updateMagazineIndicators();
         
-        // Touch swipe support for magazines
         let magazineTouchStartX = 0;
         let magazineTouchEndX = 0;
         
@@ -904,113 +887,89 @@
             
             if (Math.abs(swipeDistance) > swipeThreshold) {
                 if (swipeDistance > 0) {
-                    scrollMagazines(1); // Swipe left, scroll right
+                    scrollMagazines(1);
                 } else {
-                    scrollMagazines(-1); // Swipe right, scroll left
+                    scrollMagazines(-1);
                 }
             }
         }
-        /* ===================================
-   JAVASCRIPT FOR CONTACT FORM
-   
-   INSTRUCTIONS:
-   Add this code to the <script> section at the bottom of shazma-gaffoor.html
-   Place it BEFORE the closing </script> tag (after all the carousel code)
-   =================================== */
 
-// Contact Form Functions
-function toggleContactForm() {
-    const modal = document.getElementById('contactFormModal');
-    modal.classList.toggle('active');
-    
-    // Prevent body scroll when modal is open
-    if (modal.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-        // Reset form when closing
-        document.getElementById('contactForm').reset();
-        document.getElementById('formStatus').className = 'form-status';
-        document.getElementById('formStatus').style.display = 'none';
-    }
-}
+        // Contact Form Functions
+        function toggleContactForm() {
+            const modal = document.getElementById('contactFormModal');
+            modal.classList.toggle('active');
+            
+            if (modal.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+                document.getElementById('contactForm').reset();
+                document.getElementById('formStatus').className = 'form-status';
+                document.getElementById('formStatus').style.display = 'none';
+            }
+        }
 
-// Close modal when clicking outside
-document.addEventListener('click', function(event) {
-    const modal = document.getElementById('contactFormModal');
-    if (event.target === modal) {
-        toggleContactForm();
-    }
-});
-
-// Close modal on escape key
-document.addEventListener('keydown', function(event) {
-    const modal = document.getElementById('contactFormModal');
-    if (event.key === 'Escape' && modal.classList.contains('active')) {
-        toggleContactForm();
-    }
-});
-
-// Handle form submission
-async function handleFormSubmit(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const submitButton = document.getElementById('submitButton');
-    const formStatus = document.getElementById('formStatus');
-    
-    // Get form data
-    const formData = {
-        name: document.getElementById('senderName').value,
-        email: document.getElementById('senderEmail').value,
-        subject: document.getElementById('subject').value || 'Portfolio Contact Form',
-        message: document.getElementById('message').value
-    };
-    
-    // Disable submit button and show loading state
-    submitButton.disabled = true;
-    submitButton.classList.add('sending');
-    formStatus.style.display = 'none';
-    
-    try {
-        // Create mailto link as fallback
-        const mailtoLink = `mailto:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="63100b02190e024d040205050c0c1123040e020a0f4d000c0e">[email&#160;protected]</a>?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-            `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        )}`;
-        
-        // For a production environment, you would replace this with an actual form submission
-        // to a backend service like Formspree, EmailJS, or your own server
-        
-        // Simulate form submission (replace with actual API call)
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Open mailto as fallback
-        window.location.href = mailtoLink;
-        
-        // Show success message
-        formStatus.className = 'form-status success';
-        formStatus.textContent = 'Your email client has been opened. Please send the message to complete your enquiry.';
-        formStatus.style.display = 'block';
-        
-        // Reset form after short delay
-        setTimeout(() => {
-            form.reset();
-            setTimeout(() => {
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('contactFormModal');
+            if (event.target === modal) {
                 toggleContactForm();
-            }, 2000);
-        }, 1000);
-        
-    } catch (error) {
-        // Show error message
-        formStatus.className = 'form-status error';
-        formStatus.textContent = 'Something went wrong. Please email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0c3d8d1caddd19ed7d1d6d6dfdfc2f0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</a> directly.';
-        formStatus.style.display = 'block';
-    } finally {
-        // Re-enable submit button
-        submitButton.disabled = false;
-        submitButton.classList.remove('sending');
-    }
+            }
+        });
 
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('contactFormModal');
+            if (event.key === 'Escape' && modal.classList.contains('active')) {
+                toggleContactForm();
+            }
+        });
+
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitButton = document.getElementById('submitButton');
+            const formStatus = document.getElementById('formStatus');
+            
+            const formData = {
+                name: document.getElementById('senderName').value,
+                email: document.getElementById('senderEmail').value,
+                subject: document.getElementById('subject').value || 'Portfolio Contact Form',
+                message: document.getElementById('message').value
+            };
+            
+            submitButton.disabled = true;
+            submitButton.classList.add('sending');
+            formStatus.style.display = 'none';
+            
+            try {
+                const mailtoLink = `mailto:shazma.gaffoor@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+                    `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+                )}`;
+                
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                window.location.href = mailtoLink;
+                
+                formStatus.className = 'form-status success';
+                formStatus.textContent = 'Your email client has been opened. Please send the message to complete your enquiry.';
+                formStatus.style.display = 'block';
+                
+                setTimeout(() => {
+                    form.reset();
+                    setTimeout(() => {
+                        toggleContactForm();
+                    }, 2000);
+                }, 1000);
+                
+            } catch (error) {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Something went wrong. Please email shazma.gaffoor@gmail.com directly.';
+                formStatus.style.display = 'block';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.classList.remove('sending');
+            }
+        }
     </script>
 </body>
 </html>
