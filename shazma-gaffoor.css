@@ -968,10 +968,35 @@ a {
 /* Articles Grid */
 .advocacy-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
     max-width: 1100px;
     margin: 0 auto;
+}
+
+/* Make the third card (if it exists and is the only one in its row) span full width */
+.advocacy-card:nth-child(3):last-child {
+    grid-column: 1 / -1;
+    max-width: 100%;
+}
+
+/* When there's a third card spanning full width, make its layout horizontal */
+.advocacy-card:nth-child(3):last-child .advocacy-link {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+}
+
+.advocacy-card:nth-child(3):last-child .advocacy-image {
+    height: 100%;
+    min-height: 400px;
+}
+
+.advocacy-card:nth-child(3):last-child .advocacy-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-xl);
 }
 
 .advocacy-card {
@@ -1172,6 +1197,23 @@ a {
     .advocacy-grid {
         grid-template-columns: 1fr;
         gap: var(--space-lg);
+    }
+    
+    .advocacy-card:nth-child(3):last-child {
+        grid-column: 1;
+    }
+    
+    .advocacy-card:nth-child(3):last-child .advocacy-link {
+        display: block;
+    }
+    
+    .advocacy-card:nth-child(3):last-child .advocacy-image {
+        height: 250px;
+        min-height: 250px;
+    }
+    
+    .advocacy-card:nth-child(3):last-child .advocacy-content {
+        padding: var(--space-lg);
     }
 
     .podcast-embed {
