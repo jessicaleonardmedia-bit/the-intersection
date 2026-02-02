@@ -1686,3 +1686,50 @@ a {
         height: 22px;
     }
 }
+/* ===================================
+   QUICK FIX - Add this to the BOTTOM of your CSS file
+   =================================== */
+
+/* Fix: Buttons side by side */
+.contact-buttons-row {
+    display: flex;
+    flex-direction: row !important;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+/* Fix: Show the About section inline */
+.about-inline {
+    display: block !important;
+    margin-top: var(--space-lg);
+}
+
+.about-inline .lead-paragraph {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--color-slate);
+}
+
+.about-inline p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+    color: var(--color-charcoal);
+}
+
+.about-inline p:last-child {
+    margin-bottom: 0;
+}
+
+/* Make sure old about section stays hidden */
+.about-section {
+    display: none !important;
+}
+
+/* Remove phone/email display if you want */
+.contact-info-display {
+    display: none !important;
+}
