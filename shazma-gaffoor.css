@@ -219,14 +219,38 @@ a {
     gap: var(--space-md);
 }
 
-/* ===================================
-   UPDATED CONTACT SECTION STYLES
-   
-   INSTRUCTIONS:
-   Add this code to shazma-gaffoor.css
-   Location: After the .contact-item styles (around line 150-180)
-   Replace the existing contact styles with these
-   =================================== */
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    padding-left: var(--space-sm);
+    border-bottom-color: var(--color-accent);
+}
+
+.contact-item:hover .contact-value {
+    color: var(--color-accent);
+}
+
+.contact-label {
+    font-family: var(--font-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-slate);
+    font-weight: 600;
+}
+
+.contact-value {
+    font-size: 1.1rem;
+    color: var(--color-charcoal);
+    font-weight: 400;
+}
 
 /* Contact Info Display (Static) */
 .contact-info-display {
@@ -476,58 +500,6 @@ a {
     background: rgba(196, 144, 122, 0.2);
     color: var(--color-charcoal);
     border: 2px solid var(--color-terracotta);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .contact-form-container {
-        padding: var(--space-lg);
-        margin: var(--space-sm);
-    }
-
-    .form-heading {
-        font-size: 1.75rem;
-    }
-
-    .linkedin-button,
-    .contact-form-toggle {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-form-modal {
-        padding: var(--space-md);
-    }
-
-    .contact-form-container {
-        padding: var(--space-md);
-    }
-
-    .form-heading {
-        font-size: 1.5rem;
-    }
-
-    .close-form {
-        top: var(--space-sm);
-        right: var(--space-sm);
-    }
-}
-
-.contact-label {
-    font-family: var(--font-secondary);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-slate);
-    font-weight: 600;
-}
-
-.contact-value {
-    font-size: 1.1rem;
-    color: var(--color-charcoal);
-    font-weight: 400;
 }
 
 /* Divider */
@@ -1224,6 +1196,22 @@ a {
     .magazine-title {
         font-size: 1.3rem;
     }
+
+    /* Contact form mobile */
+    .contact-form-container {
+        padding: var(--space-lg);
+        margin: var(--space-sm);
+    }
+
+    .form-heading {
+        font-size: 1.75rem;
+    }
+
+    .linkedin-button,
+    .contact-form-toggle {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1324,6 +1312,24 @@ a {
 
     .magazine-meta {
         font-size: 0.85rem;
+    }
+
+    /* Contact form extra small */
+    .contact-form-modal {
+        padding: var(--space-md);
+    }
+
+    .contact-form-container {
+        padding: var(--space-md);
+    }
+
+    .form-heading {
+        font-size: 1.5rem;
+    }
+
+    .close-form {
+        top: var(--space-sm);
+        right: var(--space-sm);
     }
 }
 
