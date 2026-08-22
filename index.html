@@ -1,444 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Intersection - Coming Soon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Overpass:wght@700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Intersection - Look Both Ways</title>
+<meta name="description" content="A panel talk show that looks at everyday issues through an unapologetically intersectional lens. Made in Melbourne for community television, streaming, and social.">
 
-        html {
-            scroll-behavior: smooth;
-        }
+<meta property="og:title" content="The Intersection">
+<meta property="og:description" content="A panel talk show that looks at everyday issues through an unapologetically intersectional lens. Made in Melbourne for community television, streaming, and social.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theintersectionshow.au/">
+<meta property="og:image" content="https://theintersectionshow.au/host_promo_intersection_2025.jpg">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        /* Hero Section - Full Screen */
-        .hero-section {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-image: url('host_promo_intersection_2025.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #f0f0f0;
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Logo - Top Left */
-        .hero-content {
-            position: absolute;
-            top: 3rem;
-            left: 3rem;
-            z-index: 10;
-        }
-
-        .logo-image {
-            max-width: 200px;
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 1));
-        }
-
-        /* Announcement Box - Bottom Right */
-        .announcement {
-            position: absolute;
-            bottom: 3rem;
-            right: 3rem;
-            background: #fe05b5;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: white;
-            line-height: 1.4;
-            box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
-            z-index: 10;
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            z-index: 10;
-            cursor: pointer;
-            text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        /* Contact Section */
-        .contact-section {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('intersection_lockup_pink.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 4rem 2rem;
-            position: relative;
-        }
-
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 0;
-        }
-
-        .contact-container {
-            max-width: 600px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-container h2 {
-            font-family: 'Overpass', sans-serif;
-            font-size: 2.5rem;
-            color: #1F2937;
-            margin-bottom: 1rem;
-        }
-
-        .contact-container p {
-            font-size: 1.1rem;
-            color: #4B5563;
-            margin-bottom: 2rem;
-        }
-
-        .contact-form {
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #1F2937;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #E5E7EB;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s ease;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #6B9BD1;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #FF1493;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: #C71585;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn:disabled {
-            background: #9CA3AF;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Success Message */
-.success-message {
-    display: none;
-    background: #ffca05;
-    color: black;
-    padding: 2rem;
-    border-radius: 12px;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
-    margin-top: 2rem;
-    text-align: center;
-    animation: slideIn 0.5s ease;
-}
-
-.success-message.show {
-    display: block;
-}
-
-.success-message h3 {
-    font-family: 'Overpass', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: black;
-}
-
-.success-message p {
-    color: black;
-    margin-bottom: 0;
-    font-family: 'Overpass', sans-serif;
-}
-
-.checkmark {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: black;
-}
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Hidden form state */
-        .contact-form.hidden {
-            display: none;
-        }
-
-        /* Small adjustments for medium screens */
-        @media (max-width: 1024px) {
-            .hero-section {
-                padding: 2.5rem;
-            }
-
-            .hero-content {
-                top: 2.5rem;
-                left: 2.5rem;
-            }
-
-            .logo-image {
-                max-width: 180px;
-            }
-
-            .announcement {
-                bottom: 2.5rem;
-                right: 2.5rem;
-                font-size: 1rem;
-                padding: 0.9rem 1.3rem;
-            }
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 480px) {
-            .hero-section {
-                background-image: url('host_promo_website_vertical.png');
-                padding: 2rem;
-            }
-
-            .hero-content {
-                top: 2rem;
-                left: 2rem;
-            }
-
-            .logo-image {
-                max-width: 140px;
-            }
-
-            .announcement {
-                bottom: 2rem;
-                right: 2rem;
-                font-size: 1rem;
-                padding: 0.8rem 1.2rem;
-            }
-
-            .contact-container {
-                padding: 2rem;
-            }
-
-            .contact-container h2 {
-                font-size: 2rem;
-            }
-        }
-
-        /* Extra small phones */
-        @media (max-width: 375px) {
-            .hero-section {
-                padding: 1.5rem;
-            }
-
-            .hero-content {
-                top: 1.5rem;
-                left: 1.5rem;
-            }
-
-            .logo-image {
-                max-width: 120px;
-            }
-
-            .announcement {
-                bottom: 1.5rem;
-                right: 1.5rem;
-                font-size: 0.9rem;
-                padding: 0.7rem 1rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .scroll-indicator {
-                animation: none;
-            }
-        }
-    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Chivo:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <img src="intersection_logo_temp.png" alt="The Intersection - Look Both Ways" class="logo-image">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===================== Navigation ===================== -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a class="nav-brand" href="#home" data-page="home">
+      <img src="intersection_logo_temp.png" alt="" class="nav-logo">
+      <span class="brand-name">The Intersection</span>
+    </a>
+    <button class="mobile-menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navMenu" aria-label="Menu">&#9776;</button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" data-page="home" aria-current="page">Home</a></li>
+      <li><a href="#about" data-page="about">About</a></li>
+      <li><a href="#contact" data-page="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ===================== Home ===================== -->
+<div id="home" class="page active" tabindex="-1">
+
+  <section class="hero hero--image">
+    <div class="hero-inner">
+      <div class="hero-content hero-panel">
+        <h1>The Intersection</h1>
+        <p class="tagline">Look both ways</p>
+        <p class="hero-description">A panel talk show that looks at everyday issues through an unapologetically intersectional lens. Two hosts who grew up in different worlds sit down with people whose stories don't usually get on television.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#about" data-page="about">About the show</a>
         </div>
+      </div>
+      <div class="hero-image">
+        <img src="host_promo_intersection_2025.jpg" alt="The hosts and guests of The Intersection at the studio desk.">
+      </div>
+    </div>
+  </section>
 
-        <div class="announcement">
-            Coming Soon
-        </div>
+</div>
 
-        <div class="scroll-indicator" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" aria-label="Scroll down for contact form">
-            ↓
-        </div>
-    </section>
+<!-- ===================== About ===================== -->
+<div id="about" class="page" tabindex="-1">
+  <div class="container content-page">
+    <span class="eyebrow">About</span>
+    <h1><span class="hl hl--yellow">About the show</span></h1>
+    <div class="content">
+      <p class="lede">A panel talk show that looks at everyday issues through an unapologetically intersectional lens. Two hosts who grew up in different worlds sit down with people whose stories don't usually get on television, and pull complicated subjects apart with humour rather than jargon. Jess and Shaz have very different backgrounds and upbringings, and a strong friendship built on deep conversations about big ideas.</p>
+      <p>The pilot is a periods episode where the two hosts, a hijabi journalist and a bogan weirdo, a trans non-binary health promotion officer and a culturally aware period educator all talk about their own periods on free-to-air television.</p>
+      <p>Made by three Melbourne women, for community television, streaming, and social.</p>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="contact-container">
-            <h2>Get in Touch</h2>
-            <p id="contactDescription">Want to stay in the loop? Drop us a message below.</p>
+    </div>
 
-            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
-                <input type="hidden" name="form-name" value="contact">
-                <p style="display: none;">
-                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
-                </p>
+    <div class="vmv">
+      <section class="vmv-panel vmv-panel--pink">
+        <h2>Vision</h2>
+        <p>A kind and tolerant society that shares compassion with people from all walks of life.</p>
+      </section>
 
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message (Optional)</label>
-                    <textarea id="message" name="message" rows="4"></textarea>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
-            </form>
+      <section class="vmv-panel vmv-panel--blue">
+        <h2>Mission</h2>
+        <p>To create community television that reaches the hearts and minds of everyday people, breaks down ignorance, and fosters everyday kindness.</p>
+      </section>
 
-            <div class="success-message" id="successMessage">
-                <div class="checkmark">✓</div>
-                <h3>Thank You!</h3>
-                <p>We've received your message and will get back to you soon.</p>
-            </div>
-        </div>
-    </section>
+      <section class="vmv-panel vmv-panel--yellow">
+        <h2>Values</h2>
+        <ul class="values-list">
+          <li><strong>Kindness</strong> At the heart of everything we do.</li>
+          <li><strong>Respect</strong> We value the experiences of all people.</li>
+          <li><strong>Inclusivity</strong> We make space for those often left out.</li>
+          <li><strong>Intersectional feminism</strong> We uplift people in an inclusive way.</li>
+          <li><strong>Authenticity</strong> We stay true to ourselves, our values and beliefs.</li>
+          <li><strong>Gentle curiosity</strong> Openness and a desire to understand.</li>
+          <li><strong>Optimism</strong> Believing in the possibility of a better, fairer future.</li>
+          <li><strong>Bravery</strong> Willing to challenge norms and speak truth with care.</li>
+          <li><strong>Unashamed</strong> Proud of who we are and the stories we share.</li>
+        </ul>
+      </section>
+    </div>
 
-    <script>
-        const form = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-        const submitBtn = document.getElementById('submitBtn');
+    <div class="content">
+      <h2><span class="hl hl--yellow">Who makes it</span></h2>
+    </div>
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            // Get form data
-            const formData = new FormData(form);
-            
-            try {
-                // Submit to Netlify
-                const response = await fetch('/', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString()
-                });
-                
-                if (response.ok) {
-                    // Hide form and show success message
-                    form.classList.add('hidden');
-                    successMessage.classList.add('show');
-                    document.getElementById('contactDescription').style.display = 'none';
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                alert('Oops! Something went wrong. Please try again.');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-            }
-        });
-    </script>
+    <div class="team-grid">
+      <article class="card card--person">
+        <a class="person-link" href="/shazma-gaffoor">
+          <h3>Shazma Gaffoor</h3>
+          <img src="Shazma_Gaffoor_Headshot_2026.jpg" alt="Shazma Gaffoor, in a cream hijab and a zigzag-patterned jacket with bright beaded drop earrings, smiling at the camera.">
+          <span class="person-more">See her work</span>
+        </a>
+      </article>
+      <article class="card card--person">
+        <h3>Jessica Leonard</h3>
+        <img src="2025%2009%20Headshot%20JL%20LR.jpg" alt="Jessica Leonard, in large pink-framed glasses and a white shirt, half smiling at the camera.">
+      </article>
+      <article class="card card--person">
+        <h3>Sarah Lewis</h3>
+        <div class="person-noimage" aria-hidden="true"></div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Contact ===================== -->
+<div id="contact" class="page" tabindex="-1">
+  <div class="container content-page">
+    <span class="eyebrow">Contact</span>
+    <h1>Get in touch</h1>
+    <p class="form-note">Guest suggestions, story ideas, crewing, or anything else. You can also email us at <a href="mailto:the.intersection.show.australia@gmail.com">the.intersection.show.australia@gmail.com</a>.</p>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
+      <input type="hidden" name="form-name" value="contact">
+      <p hidden>
+        <label>Leave this blank <input name="bot-field"></label>
+      </p>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5"></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">Send message</button>
+    </form>
+
+    <div class="form-status" id="formStatus" role="status" tabindex="-1" hidden>
+      <h3>Message sent</h3>
+      <p>Thanks. We'll get back to you.</p>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ===================== Footer ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>The Intersection</h3>
+        <p>A panel talk show that looks at everyday issues through an unapologetically intersectional lens. Made by three Melbourne women, for community television, streaming, and social.</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul class="footer-links">
+          <li><a href="#home" data-page="home">Home</a></li>
+          <li><a href="#about" data-page="about">About</a></li>
+          <li><a href="#contact" data-page="contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Elsewhere</h3>
+        <ul class="social-grid">
+          <li><a href="https://www.facebook.com/TheIntersectionShow">Facebook</a></li>
+          <li><a href="https://www.instagram.com/the.intersection.show/">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/110960926/">LinkedIn</a></li>
+          <li><a href="https://www.youtube.com/channel/UC0Co8-0eV8NCEt-Fz_waI4g">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="acknowledgement">With support from Channel 31, Bent TV, Media Mentors Australia, Media Diversity Australia, Making The Call, and Women's Health In the North.</p>
+    <div class="footer-bottom">
+      <p>Made in Naarm / Melbourne on the lands of the Wurundjeri Woi-wurrung people.</p>
+      <p class="footer-tagline">Look both ways</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var pages = document.querySelectorAll('.page');
+  var navLinks = document.querySelectorAll('.nav-menu a');
+  var menu = document.getElementById('navMenu');
+  var menuBtn = document.getElementById('menuBtn');
+
+  function showPage(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+
+    pages.forEach(function (p) { p.classList.remove('active'); });
+    target.classList.add('active');
+
+    navLinks.forEach(function (a) {
+      if (a.getAttribute('data-page') === id) { a.setAttribute('aria-current', 'page'); }
+      else { a.removeAttribute('aria-current'); }
+    });
+
+    menu.classList.remove('active');
+    menuBtn.setAttribute('aria-expanded', 'false');
+
+    window.scrollTo(0, 0);
+    target.focus();
+  }
+
+  document.querySelectorAll('[data-page]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = link.getAttribute('data-page');
+      history.pushState(null, '', '#' + id);
+      showPage(id);
+    });
+  });
+
+  menuBtn.addEventListener('click', function () {
+    var open = menu.classList.toggle('active');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  window.addEventListener('popstate', function () {
+    showPage((location.hash || '#home').slice(1));
+  });
+
+  if (location.hash) { showPage(location.hash.slice(1)); }
+
+  // Contact form
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending';
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function (res) {
+      if (!res.ok) throw new Error('failed');
+      form.hidden = true;
+      status.hidden = false;
+      status.focus();
+    }).catch(function () {
+      status.hidden = false;
+      status.querySelector('h3').textContent = 'That did not send';
+      status.querySelector('p').textContent = 'Try again, or email us directly.';
+      status.focus();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
