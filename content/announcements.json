@@ -1,3 +1,11 @@
 {
-  "items": []
+  "items": [
+    {
+      "visible": true,
+      "title": "Test announcement",
+      "body": "Hello",
+      "link_url": "This",
+      "link_label": "is my voice"
+    }
+  ]
 }
