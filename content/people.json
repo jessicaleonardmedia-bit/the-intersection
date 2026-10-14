@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "visible": true,
+      "name": "Shazma Gaffoor",
+      "role": "",
+      "bio": "",
+      "photo": "/Shazma_Gaffoor_Headshot_2026.jpg",
+      "photo_alt": "Shazma Gaffoor, in a cream hijab and a zigzag-patterned jacket with bright beaded drop earrings, smiling at the camera.",
+      "link_url": "/shazma-gaffoor",
+      "link_label": "See her work"
+    },
+    {
+      "visible": true,
+      "name": "Jessica Leonard",
+      "role": "",
+      "bio": "",
+      "photo": "/2025%2009%20Headshot%20JL%20LR.jpg",
+      "photo_alt": "Jessica Leonard, in large pink-framed glasses and a white shirt, half smiling at the camera.",
+      "link_url": "",
+      "link_label": ""
+    },
+    {
+      "visible": true,
+      "name": "Sarah Lewis",
+      "role": "",
+      "bio": "",
+      "photo": "",
+      "photo_alt": "",
+      "link_url": "",
+      "link_label": ""
+    }
+  ]
+}

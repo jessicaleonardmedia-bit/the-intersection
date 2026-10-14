@@ -1,47 +1,107 @@
+# Dashboard for crew website updates (Decap CMS).
+# Logins are handled by Netlify Identity (invite only) and saved to GitHub
+# through Git Gateway, so crew do not need GitHub accounts.
+
 backend:
   name: git-gateway
   branch: main
+
+# Edits are saved as drafts. Someone moves them to Ready, then Publish
+# puts them live. Delete this line to make every save go live straight away.
+publish_mode: editorial_workflow
+
+site_url: https://theintersectionshow.au
+display_url: https://theintersectionshow.au
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "settings"
-    label: "Site Settings"
+  - name: "site"
+    label: "Website"
+    editor:
+      preview: false
     files:
-      - label: "Homepage"
-        name: "homepage"
-        file: "content/homepage.yml"
-        fields:
-          - {label: "Hero Title", name: "hero_title", widget: "string", default: "The Intersection"}
-          - {label: "Tagline", name: "tagline", widget: "string", default: "Look Both Ways"}
-          - {label: "Hero Description", name: "hero_description", widget: "text"}
-          - {label: "Featured Video URL", name: "featured_video", widget: "string", hint: "YouTube embed URL"}
-          - {label: "Video Description", name: "video_description", widget: "text"}
 
-  - name: "episodes"
-    label: "Episodes"
-    folder: "content/episodes"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "YouTube Video URL", name: "video_url", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
+      # ---------------------------------------------------------------
+      - label: "Announcements"
+        name: "announcements"
+        file: "content/announcements.json"
+        description: "Short notices that show at the top of the home page. Top of the list shows first."
+        fields:
+          - label: "Announcements"
+            name: "items"
+            widget: "list"
+            label_singular: "announcement"
+            summary: "{{fields.title}}"
+            required: false
+            fields:
+              - {label: "Show on the website", name: "visible", widget: "boolean", default: true}
+              - {label: "Heading", name: "title", widget: "string", hint: "Short. For example: Now airing on C31"}
+              - {label: "Message", name: "body", widget: "text", required: false, hint: "Plain text. Leave a blank line between paragraphs."}
+              - {label: "Link address", name: "link_url", widget: "string", required: false, hint: "Full web address starting with https://"}
+              - {label: "Link words", name: "link_label", widget: "string", required: false, hint: "What the button says. For example: Watch on CTV+"}
+              - label: "Stop showing after"
+                name: "show_until"
+                widget: "datetime"
+                required: false
+                format: "YYYY-MM-DD"
+                date_format: "D MMMM YYYY"
+                time_format: false
+                picker_utc: true
+                hint: "Optional. Leave empty to keep it up until someone turns it off."
 
-  - name: "pages"
-    label: "Pages"
-    files:
-      - label: "About Page"
-        name: "about"
-        file: "content/about.yml"
+      # ---------------------------------------------------------------
+      - label: "Episodes"
+        name: "episodes"
+        file: "content/episodes.json"
+        description: "The Episodes page only appears on the website once at least one episode is set to show."
         fields:
-          - {label: "Content", name: "content", widget: "markdown"}
-      
-      - label: "Information Page"
-        name: "information"
-        file: "content/information.yml"
+          - label: "Episodes"
+            name: "items"
+            widget: "list"
+            label_singular: "episode"
+            summary: "{{fields.title}} ({{fields.status}})"
+            required: false
+            fields:
+              - {label: "Show on the website", name: "visible", widget: "boolean", default: false}
+              - {label: "Episode title", name: "title", widget: "string"}
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options: ["Coming soon", "Out now"]
+                default: "Coming soon"
+              - {label: "When and where it airs", name: "airs", widget: "string", required: false, hint: "Free text. For example: Tuesday 8 December, 8pm on C31 and CTV+"}
+              - {label: "Description", name: "description", widget: "text", required: false, hint: "Plain text. Leave a blank line between paragraphs."}
+              - {label: "Image", name: "image", widget: "image", required: false, hint: "A still or thumbnail. Landscape works best."}
+              - {label: "Image description", name: "image_alt", widget: "string", required: false, hint: "For people using screen readers. Describe what is in the picture."}
+              - label: "Watch links"
+                name: "links"
+                widget: "list"
+                label_singular: "link"
+                required: false
+                summary: "{{fields.label}}"
+                fields:
+                  - {label: "Button words", name: "label", widget: "string", hint: "For example: Watch on YouTube"}
+                  - {label: "Link address", name: "url", widget: "string", hint: "Full web address starting with https://"}
+
+      # ---------------------------------------------------------------
+      - label: "People"
+        name: "people"
+        file: "content/people.json"
+        description: "The 'Who makes it' cards on the About page. Drag to reorder."
         fields:
-          - {label: "Content", name: "content", widget: "markdown"}
+          - label: "People"
+            name: "items"
+            widget: "list"
+            label_singular: "person"
+            summary: "{{fields.name}}"
+            fields:
+              - {label: "Show on the website", name: "visible", widget: "boolean", default: true}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string", required: false, hint: "Optional. For example: Producer and host"}
+              - {label: "Short bio", name: "bio", widget: "text", required: false, hint: "Optional. Only add with the person's OK."}
+              - {label: "Photo", name: "photo", widget: "image", required: false, hint: "Portrait shape works best."}
+              - {label: "Photo description", name: "photo_alt", widget: "string", required: false, hint: "For people using screen readers. Describe the person as they would want to be described."}
+              - {label: "Link address", name: "link_url", widget: "string", required: false, hint: "Optional. Their own page or portfolio."}
+              - {label: "Link words", name: "link_label", widget: "string", required: false, default: "See their work"}
