@@ -28,6 +28,7 @@
     <ul class="nav-menu" id="navMenu">
       <li><a href="#home" data-page="home" aria-current="page">Home</a></li>
       <li><a href="#about" data-page="about">About</a></li>
+      <li class="js-episodes-link" hidden><a href="#episodes" data-page="episodes">Episodes</a></li>
       <li><a href="#contact" data-page="contact">Contact</a></li>
     </ul>
   </div>
@@ -37,6 +38,9 @@
 
 <!-- ===================== Home ===================== -->
 <div id="home" class="page active" tabindex="-1">
+
+  <!-- Filled from content/announcements.json (edited in the dashboard) -->
+  <div class="announcements" id="announcements" hidden></div>
 
   <section class="hero hero--image">
     <div class="hero-discs" aria-hidden="true"><span></span><span></span></div>
@@ -99,7 +103,7 @@
       <h2><span class="hl hl--yellow">Who makes it</span></h2>
     </div>
 
-    <div class="team-grid">
+    <div class="team-grid" id="teamGrid">
       <article class="card card--person">
         <a class="person-link" href="/shazma-gaffoor">
           <h3>Shazma Gaffoor</h3>
@@ -115,6 +119,18 @@
         <h3>Sarah Lewis</h3>
         <div class="person-noimage" aria-hidden="true"></div>
       </article>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Episodes ===================== -->
+<!-- Filled from content/episodes.json. The nav link stays hidden until at least one episode is set to show. -->
+<div id="episodes" class="page" tabindex="-1">
+  <div class="container content-page">
+    <span class="eyebrow">Episodes</span>
+    <h1><span class="hl hl--yellow">Episodes</span></h1>
+    <div class="episode-list" id="episodeList">
+      <p>Episodes are on their way.</p>
     </div>
   </div>
 </div>
@@ -169,6 +185,7 @@
         <ul class="footer-links">
           <li><a href="#home" data-page="home">Home</a></li>
           <li><a href="#about" data-page="about">About</a></li>
+          <li class="js-episodes-link" hidden><a href="#episodes" data-page="episodes">Episodes</a></li>
           <li><a href="#contact" data-page="contact">Contact</a></li>
         </ul>
       </div>
@@ -268,6 +285,143 @@
       submitBtn.textContent = 'Send message';
     });
   });
+})();
+</script>
+
+<script>
+/* ==========================================================================
+   Content from the dashboard (/admin). Each file in /content is edited by
+   crew there. If a file fails to load, the page keeps what's written above.
+   Everything is inserted as text, never as HTML.
+   ========================================================================== */
+(function () {
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+  function safeUrl(u) {
+    u = (u || '').trim();
+    return /^(https?:\/\/|\/|mailto:)/i.test(u) ? u : '';
+  }
+  function paragraphs(parent, text) {
+    (text || '').split(/\n\s*\n/).forEach(function (t) {
+      t = t.trim();
+      if (t) parent.appendChild(el('p', '', t));
+    });
+  }
+  function load(name) {
+    return fetch('content/' + name + '.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(name); return r.json(); })
+      .then(function (d) { return (d && d.items) || []; })
+      .then(function (items) { return items.filter(function (i) { return i && i.visible !== false; }); });
+  }
+
+  // Announcements
+  load('announcements').then(function (items) {
+    var today = new Date().toISOString().slice(0, 10);
+    items = items.filter(function (a) { return a.title && (!a.show_until || a.show_until >= today); });
+    if (!items.length) return;
+    var box = document.getElementById('announcements');
+    box.setAttribute('aria-label', 'Announcements');
+    box.setAttribute('role', 'region');
+    items.forEach(function (a) {
+      var item = el('div', 'announcement');
+      item.appendChild(el('h2', 'announcement-title', a.title));
+      paragraphs(item, a.body);
+      var href = safeUrl(a.link_url);
+      if (href) {
+        var link = el('a', 'btn', a.link_label || 'Find out more');
+        link.href = href;
+        item.appendChild(link);
+      }
+      box.appendChild(item);
+    });
+    box.hidden = false;
+  }).catch(function () {});
+
+  // Episodes
+  load('episodes').then(function (items) {
+    items = items.filter(function (ep) { return ep.title; });
+    if (!items.length) return;
+    var list = document.getElementById('episodeList');
+    list.textContent = '';
+    items.forEach(function (ep) {
+      var card = el('article', 'card episode-card');
+      var src = safeUrl(ep.image);
+      if (src) {
+        var img = el('img', 'episode-image');
+        img.src = src;
+        img.alt = ep.image_alt || ('Still from ' + ep.title);
+        img.loading = 'lazy';
+        card.appendChild(img);
+      }
+      var body = el('div', 'card-body');
+      if (ep.status) body.appendChild(el('span', 'episode-status' + (ep.status === 'Out now' ? ' episode-status--out' : ''), ep.status));
+      body.appendChild(el('h2', 'episode-title', ep.title));
+      if (ep.airs) body.appendChild(el('p', 'episode-airs', ep.airs));
+      paragraphs(body, ep.description);
+      var links = (ep.links || []).filter(function (l) { return l && safeUrl(l.url); });
+      if (links.length) {
+        var row = el('div', 'episode-links');
+        links.forEach(function (l) {
+          var a = el('a', 'btn', l.label || 'Watch');
+          a.href = safeUrl(l.url);
+          row.appendChild(a);
+        });
+        body.appendChild(row);
+      }
+      card.appendChild(body);
+      list.appendChild(card);
+    });
+    document.querySelectorAll('.js-episodes-link').forEach(function (li) { li.hidden = false; });
+  }).catch(function () {});
+
+  // People
+  load('people').then(function (items) {
+    items = items.filter(function (p) { return p.name; });
+    if (!items.length) return;
+    var grid = document.getElementById('teamGrid');
+    grid.textContent = '';
+    items.forEach(function (p) {
+      var card = el('article', 'card card--person');
+      var inner = card;
+      var href = safeUrl(p.link_url);
+      if (href) {
+        inner = el('a', 'person-link');
+        inner.href = href;
+        card.appendChild(inner);
+      }
+      inner.appendChild(el('h3', '', p.name));
+      if (p.role) inner.appendChild(el('p', 'person-role', p.role));
+      var src = safeUrl(p.photo);
+      if (src) {
+        var img = el('img');
+        img.src = src;
+        img.alt = p.photo_alt || p.name;
+        inner.appendChild(img);
+      } else {
+        var blank = el('div', 'person-noimage');
+        blank.setAttribute('aria-hidden', 'true');
+        inner.appendChild(blank);
+      }
+      if (p.bio) inner.appendChild(el('p', 'person-bio', p.bio));
+      if (href) inner.appendChild(el('span', 'person-more', p.link_label || 'See their work'));
+      grid.appendChild(card);
+    });
+  }).catch(function () {});
+
+  // Dashboard invite and password emails link back to this page with a token.
+  // Only then is the Netlify login script loaded, so ordinary visitors never load it.
+  if (/(invite|recovery|confirmation|email_change)_token=|access_token=/.test(location.hash)) {
+    var s = document.createElement('script');
+    s.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+    s.onload = function () {
+      window.netlifyIdentity.on('login', function () { location.href = '/admin/'; });
+    };
+    document.head.appendChild(s);
+  }
 })();
 </script>
 

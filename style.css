@@ -1222,3 +1222,109 @@ footer::before {
 
 /* The hero tag was removed, so the heading needs its own gap. */
 .hero h1 { margin-bottom: 1.25rem; }
+
+/* --------------------------------------------------------------------------
+   Dashboard content
+   Announcements, episodes and the extras on person cards. All of it is
+   filled in by crew through /admin, so every style here has to cope with
+   any length of text and with optional bits missing.
+   -------------------------------------------------------------------------- */
+
+.announcements {
+  max-width: var(--max);
+  margin: 1.5rem auto 0;
+  padding: 0 var(--pad);
+  display: grid;
+  gap: 1rem;
+}
+
+.announcement {
+  background: var(--tint-pink);
+  border: var(--rule);
+  border-left: 14px solid var(--yellow);
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.4rem 1.3rem;
+}
+
+.announcement-title {
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+
+.announcement p { margin-bottom: 0.6rem; }
+.announcement .btn { margin-top: 0.4rem; }
+
+.episode-list {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 860px) {
+  .episode-list { grid-template-columns: 1fr 1fr; }
+}
+
+.episode-card:hover { transform: none; box-shadow: var(--shadow); }
+
+.episode-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: var(--rule);
+}
+
+.episode-status {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 3px solid var(--black);
+  background: var(--tint-blue);
+  padding: 0.2rem 0.55rem;
+  margin-bottom: 0.75rem;
+}
+
+.episode-status--out { background: var(--yellow); }
+
+.episode-title {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+
+.episode-airs {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.episode-card .card-body p { margin-bottom: 0.6rem; }
+
+.episode-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.person-role {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: -0.4rem;
+}
+
+.person-bio { font-size: 0.95rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement .btn, .episode-links .btn { transition: none; }
+}
