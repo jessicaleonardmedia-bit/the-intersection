@@ -1230,31 +1230,47 @@ footer::before {
    any length of text and with optional bits missing.
    -------------------------------------------------------------------------- */
 
+/* Announcements: a full-width band edged with hazard hatching, sitting
+   between the nav and the hero. Yellow appears only as hatching. */
 .announcements {
-  max-width: var(--max);
-  margin: 1.5rem auto 0;
-  padding: 0 var(--pad);
+  position: relative;
+  background: var(--white);
+  border-bottom: var(--rule);
+  padding-block: 1.4rem;
+  padding-inline: max(var(--pad), calc((100% - var(--max)) / 2 + var(--pad)));
   display: grid;
   gap: 1rem;
 }
 
+.announcements::before,
+.announcements::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(-45deg, var(--yellow) 0 12px, var(--black) 12px 24px);
+}
+.announcements::before { top: 0; }
+.announcements::after { bottom: 0; }
+
 .announcement {
-  background: var(--tint-pink);
-  border: var(--rule);
-  border-left: 14px solid var(--yellow);
-  box-shadow: var(--shadow);
-  padding: 1.1rem 1.4rem 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 1.25rem;
+  padding-block: 0.2rem;
 }
 
 .announcement-title {
   font-family: var(--display);
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  font-size: clamp(1.2rem, 2.4vw, 1.4rem);
   line-height: 1.15;
-  margin-bottom: 0.4rem;
+  margin: 0;
 }
 
-.announcement p { margin-bottom: 0.6rem; }
-.announcement .btn { margin-top: 0.4rem; }
+.announcement p { margin: 0; flex: 1 1 18rem; }
+.announcement .btn { margin: 0; }
 
 .episode-list {
   display: grid;
