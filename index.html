@@ -12,9 +12,8 @@
 <meta property="og:url" content="https://theintersectionshow.au/">
 <meta property="og:image" content="https://theintersectionshow.au/host_promo_intersection_2025.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Chivo:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/Overpass-Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,10 +23,7 @@
 <!-- ===================== Navigation ===================== -->
 <nav class="navbar">
   <div class="nav-container">
-    <a class="nav-brand" href="#home" data-page="home">
-      <img src="intersection_logo_temp.png" alt="" class="nav-logo">
-      <span class="brand-name">The Intersection</span>
-    </a>
+    <a class="nav-brand" href="#home" data-page="home"><span class="brand-words"><span class="brand-name">The Intersection</span><span class="brand-tag">Look both ways</span></span></a>
     <button class="mobile-menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navMenu" aria-label="Menu">&#9776;</button>
     <ul class="nav-menu" id="navMenu">
       <li><a href="#home" data-page="home" aria-current="page">Home</a></li>
@@ -43,10 +39,10 @@
 <div id="home" class="page active" tabindex="-1">
 
   <section class="hero hero--image">
+    <div class="hero-discs" aria-hidden="true"><span></span><span></span></div>
     <div class="hero-inner">
       <div class="hero-content hero-panel">
         <h1>The Intersection</h1>
-        <p class="tagline">Look both ways</p>
         <p class="hero-description">A panel talk show that looks at everyday issues through an unapologetically intersectional lens. Two hosts who grew up in different worlds sit down with people whose stories don't usually get on television.</p>
         <div class="hero-cta">
           <a class="btn" href="#about" data-page="about">About the show</a>
@@ -186,7 +182,11 @@
         </ul>
       </div>
     </div>
-    <p class="acknowledgement">With support from Channel 31, Bent TV, Media Mentors Australia, Media Diversity Australia, Making The Call, and Women's Health In the North.</p>
+    <p class="acknowledgement">With support from <a href="https://www.c31.org.au/">Channel 31</a>, Bent TV, <a href="https://www.mediamentors.com.au/">Media Mentors Australia</a>, <a href="https://www.mediadiversityaustralia.org/">Media Diversity Australia</a>, Making The Call, <a href="https://www.whin.org.au/">Women's Health In the North</a>, and the <a href="https://cbf.org.au">Community Broadcasting Foundation</a>.</p>
+    <div class="cbf-ack">
+      <a class="cbf-logo" href="http://cbf.org.au"><img src="cbf-logo-white.png" alt="Community Broadcasting Foundation" width="600" height="276"></a>
+      <p>Produced with the assistance of the Community Broadcasting Foundation. Find out more at <a href="http://www.cbf.org.au">www.cbf.org.au</a>.</p>
+    </div>
     <div class="footer-bottom">
       <p>Made in Naarm / Melbourne on the lands of the Wurundjeri Woi-wurrung people.</p>
       <p class="footer-tagline">Look both ways</p>

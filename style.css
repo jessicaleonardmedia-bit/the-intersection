@@ -5,45 +5,63 @@
    ========================================================================== */
 
 :root {
-  /* Palette */
-  --pink:   #FE05B5;
-  --yellow: #FFCA05;
-  --blue:   #1B3BFF;
-  --green:  #00E05A;
+  /* Palette: The Intersection design system.
+     Pink, purple and blue are the show's colour. Yellow and black are structure only. */
+  --pink:   #FF04B5;  /* pink-hot */
+  --pink-logo: #FF81DA;
+  --purple: #AC85E9;
+  --blue:   #0337FF;
+  --yellow: #FFCB03;  /* give-way yellow: rules, tags, hatching only */
 
-  /* Darker pink, used wherever white text sits on pink.
-     Full-strength pink with white fails contrast at 3.56:1. This is 5.91:1. */
-  --pink-dark: #BE0387;
+  /* Kept as an alias so older rules still resolve. Ink text on pink passes at 5.9:1,
+     so pink fills now carry black text instead of a darker pink with white. */
+  --pink-dark: #FF04B5;
 
-  /* 10% pink over white. Flat field for the hero. Black text 16.4:1. */
-  --pink-pale: #FEE6F8;
+  /* Pale grounds for text panels. Black text passes above 14:1 on both. */
+  --pink-pale: #FFCDF0;
+  --tint-pink: #FFCDF0;
+  --tint-blue: #CDD7FF;
 
-  /* 20% accent over white. Black text stays above 14:1 on all four. */
-  --tint-pink:   #FECDF0;
-  --tint-yellow: #FFF4CD;
-  --tint-blue:   #D1D7FF;
-  --tint-green:  #CCF8DE;
-  --cream:  #FDF3D2;
-  --black:  #0A0A0A;
+  /* Retired from the look: green, the yellow tints and cream. Mapped to
+     current values so nothing breaks. */
+  --green: #AC85E9;
+  --tint-green: #CDD7FF;
+  --tint-yellow: #FFFFFF;
+  --cream: #FFFFFF;
+
+  --black:  #000000;
   --white:  #FFFFFF;
 
   /* Hard shadows, no blur anywhere */
   --shadow:    6px 6px 0 var(--black);
   --shadow-sm: 4px 4px 0 var(--black);
-  --shadow-lg: 10px 10px 0 var(--black);
+  --shadow-lg: 12px 12px 0 var(--black);
 
   --rule: 4px solid var(--black);
 
-  /* Type */
-  --display: 'Outfit', system-ui, sans-serif;
-  --body:    'Chivo', system-ui, sans-serif;
-  --mono:    'Space Mono', ui-monospace, monospace;
+  /* Type: Overpass for display and body, Big Shoulders Display for labels
+     and sign-style text, Boston Traffic for the tagline only. */
+  --display: 'Overpass', system-ui, sans-serif;
+  --body:    'Overpass', system-ui, sans-serif;
+  --mono:    'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --stencil: 'Boston Traffic', 'Big Shoulders Display', sans-serif;
 
   /* Spacing */
   --gap:  1.5rem;
   --pad:  clamp(1.25rem, 4vw, 3rem);
   --max:  1180px;
 }
+
+/* Self-hosted fonts. Overpass and Big Shoulders Display: SIL Open Font Licence.
+   Boston Traffic: freeware by Vic Fieger. */
+@font-face { font-family: 'Overpass'; src: url('fonts/Overpass-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Overpass'; src: url('fonts/Overpass-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Overpass'; src: url('fonts/Overpass-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Overpass'; src: url('fonts/Overpass-Black.woff2') format('woff2'); font-weight: 800 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Big Shoulders Display'; src: url('fonts/BigShouldersDisplay-Bold.woff2') format('woff2'); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: 'Big Shoulders Display'; src: url('fonts/BigShouldersDisplay-ExtraBold.woff2') format('woff2'); font-weight: 800 900; font-display: swap; }
+@font-face { font-family: 'Boston Traffic'; src: url('fonts/BostonTraffic.ttf') format('truetype'); font-display: swap; }
+
 
 /* --------------------------------------------------------------------------
    Reset and base
@@ -221,7 +239,7 @@ p + p { margin-top: 1rem; }
 .nav-menu a[aria-current="page"] {
   border-color: var(--black);
   background: var(--pink-dark);
-  color: var(--white);
+  color: var(--black);
   box-shadow: var(--shadow-sm);
 }
 
@@ -276,10 +294,15 @@ p + p { margin-top: 1rem; }
   font-size: clamp(0.9rem, 2vw, 1.05rem);
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  background: var(--black);
-  color: var(--yellow);
+  font-family: var(--stencil);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  background: var(--yellow);
+  color: var(--black);
+  border: 3px solid var(--black);
+  box-shadow: var(--shadow-sm);
   display: inline-block;
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 0.8rem 0.25rem;
   margin-bottom: 1.5rem;
 }
 
@@ -298,26 +321,7 @@ p + p { margin-top: 1rem; }
   gap: 0.75rem;
 }
 
-/* Memphis confetti, decorative only */
-.confetti {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-.confetti span { position: absolute; display: block; }
-.c-dot   { width: 18px; height: 18px; border-radius: 50%; background: var(--blue); }
-.c-tri   { width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 26px solid var(--green); }
-.c-sq    { width: 22px; height: 22px; background: var(--yellow); transform: rotate(18deg); }
-.c-arc   { width: 46px; height: 23px; border-radius: 46px 46px 0 0; background: var(--pink); }
-.c-zig   { width: 40px; height: 12px; background:
-             repeating-linear-gradient(135deg, var(--pink) 0 6px, transparent 6px 12px); }
-
-.confetti span:nth-child(1) { top: 8%;  left: 4%; }
-.confetti span:nth-child(2) { top: 20%; right: 6%; }
-.confetti span:nth-child(3) { bottom: 14%; left: 8%; }
-.confetti span:nth-child(4) { bottom: 26%; right: 3%; }
-.confetti span:nth-child(5) { top: 52%; left: 46%; }
+/* Memphis confetti retired from the look. */
 
 /* --------------------------------------------------------------------------
    Buttons
@@ -335,12 +339,12 @@ p + p { margin-top: 1rem; }
   min-height: 44px;
   border: 3px solid var(--black);
   background: var(--pink-dark);
-  color: var(--white);
+  color: var(--black);
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.1s;
 }
-.btn:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow); color: var(--white); }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow); color: var(--black); }
 .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--black); }
 
 .btn--yellow { background: var(--yellow); color: var(--black); }
@@ -620,7 +624,7 @@ input:focus, textarea:focus {
   min-height: 44px;
   border: 3px solid var(--black);
   background: var(--pink-dark);
-  color: var(--white);
+  color: var(--black);
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.1s;
@@ -682,7 +686,7 @@ footer a:hover { color: var(--yellow); }
 }
 
 .footer-tagline {
-  font-family: var(--mono);
+  font-family: var(--stencil);
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -885,7 +889,7 @@ footer a:focus-visible {
    -------------------------------------------------------------------------- */
 
 .acknowledgement {
-  font-family: var(--mono);
+  font-family: var(--body);
   font-size: 0.78rem;
   line-height: 1.7;
   max-width: 70ch;
@@ -1156,3 +1160,65 @@ footer a:focus-visible {
   .vmv-panel--blue,
   .vmv-panel--yellow { background: var(--white); }
 }
+
+
+/* ==========================================================================
+   Design system pass
+   Big Shoulders Display is condensed, so small labels set in it are nudged up
+   to stay readable.
+   ========================================================================== */
+
+.eyebrow, .nav-menu a, .btn, .submit-btn, .footer-grid h3, .person-more, label {
+  font-size: max(0.95rem, 1em);
+  letter-spacing: 0.08em;
+}
+.btn, .submit-btn { font-weight: 800; }
+
+/* Zebra band along the top of the footer: road marking as structure. */
+footer { border-top: 0; }
+footer::before {
+  content: "";
+  display: block;
+  height: 18px;
+  margin-top: calc(-1 * clamp(2rem, 5vw, 3rem));
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  border-bottom: var(--rule);
+  background: repeating-linear-gradient(90deg, var(--white) 0 22px, var(--black) 22px 44px);
+}
+.social-grid a { font-size: 0.95rem; letter-spacing: 0.08em; }
+
+/* Pages and the form status take focus from script for screen readers.
+   They are not controls, so they get no visible ring. */
+.page:focus, .page:focus-visible, .form-status:focus { outline: none; }
+
+/* Overprint discs in the hero: the one place two show colours cross.
+   Decoration only, never behind text. */
+.hero-discs { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.hero-discs span { position: absolute; border-radius: 50%; width: clamp(180px, 26vw, 340px); aspect-ratio: 1; }
+.hero-discs span:nth-child(1) { background: var(--pink); right: 4%; bottom: -18%; }
+.hero-discs span:nth-child(2) { background: var(--purple); right: -6%; bottom: -6%; mix-blend-mode: multiply; }
+@media (max-width: 860px) { .hero-discs span { width: 180px; } }
+@media (prefers-contrast: more) { .hero-discs { display: none; } }
+
+/* Supporter links and the CBF acknowledgement (grant clause 14.2E). */
+.acknowledgement a { color: var(--white); }
+.acknowledgement a:hover { color: var(--yellow); }
+.cbf-ack { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-bottom: 1.5rem; }
+.cbf-ack p { margin: 0; font-size: 0.9rem; max-width: 60ch; }
+.cbf-logo { display: inline-block; }
+.cbf-logo img { height: 64px; width: auto; }
+.cbf-logo span { color: var(--black); font-family: var(--mono); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.9rem; }
+
+/* Web logo: typed name with a stencil tag, optionally led by the two-way arrow. */
+.nav-brand { color: var(--black); }
+.brand-words { display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+.brand-name { font-family: var(--display); font-weight: 900; font-size: clamp(1.2rem, 2.6vw, 1.45rem); line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
+.brand-tag { font-family: var(--stencil); font-size: 0.8rem; line-height: 1; letter-spacing: 0.06em; text-transform: uppercase; background: var(--yellow); border: 2px solid var(--black); padding: 0.25rem 0.4rem 0.1rem; white-space: nowrap; }
+.nav-brand--arrow { gap: 0.6rem; }
+.brand-arrow { width: 42px; height: 42px; flex: 0 0 42px; color: var(--pink); }
+
+/* Breathing room between the nav and the first heading on inner pages. */
+.content-page { padding-top: clamp(2.5rem, 6vw, 4rem); }
+
+/* The hero tag was removed, so the heading needs its own gap. */
+.hero h1 { margin-bottom: 1.25rem; }
