@@ -1,0 +1,12 @@
+The pictures in this folder are adapted from the Mulberry Symbol set.
+
+Mulberry Symbols, copyright 2018-2026 Steve Lee.
+https://mulberrysymbols.org
+https://github.com/mulberrysymbols/mulberry-symbols
+
+Licensed under the Creative Commons Attribution-ShareAlike 4.0 International
+licence: https://creativecommons.org/licenses/by-sa/4.0/
+
+Changes made by The Intersection: colours changed to the show's colours,
+and skin and hair colours varied. These adapted pictures are shared under
+the same licence (CC BY-SA 4.0).

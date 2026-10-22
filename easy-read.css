@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Easy Read pages
+   Loaded after style.css. Picture on the left, text on the right,
+   larger type, question headings between groups.
+   ========================================================================== */
+
+.er-page { padding-block: clamp(2rem, 5vw, 3.5rem); }
+
+.er-intro { max-width: 46rem; margin-bottom: 2rem; }
+.er-intro h1 { margin-bottom: 1rem; }
+
+/* Link back to the standard page. A plain underlined link, easy to spot. */
+.er-back { font-size: 1.2rem; font-weight: 700; }
+
+.er-section { max-width: 46rem; margin-top: 2.75rem; }
+.er-section h2 { margin-bottom: 1.25rem; }
+.er-section h2 .hl { line-height: 1.5; }
+
+.er-rows { list-style: none; display: grid; gap: 1.25rem; }
+
+.er-row {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+/* Pictures: white tile, black rule and a hard shadow, like every box on the site. */
+.er-pic {
+  width: 9rem;
+  height: 9rem;
+  background: var(--white);
+  border: 3px solid var(--black);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  overflow: hidden;
+}
+.er-pic img { width: 100%; height: 100%; object-fit: contain; padding: 0.5rem; }
+.er-pic--photo img { object-fit: cover; padding: 0; }
+.er-pic--pair img { width: 50%; object-fit: cover; object-position: center top; padding: 0; }
+.er-pic--pair img + img { border-left: 3px solid var(--black); }
+
+/* Text: bigger than body copy, generous spacing, never justified. */
+.er-text { font-size: 1.3rem; line-height: 1.6; text-align: left; }
+.er-text p + p { margin-top: 0.5rem; }
+.er-text strong { font-weight: 800; }
+.er-text a { font-weight: 700; text-decoration-thickness: 3px; }
+
+.er-credit {
+  max-width: 46rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--black);
+  font-size: 0.95rem;
+}
+
+/* Phones: pictures stay a fixed size so the text column doesn't shrink
+   as the reader makes the text bigger. */
+@media (max-width: 640px) {
+  .er-row { grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.9rem; align-items: start; }
+  .er-pic { width: 4.5rem; height: 4.5rem; box-shadow: none; }
+  .er-pic img { padding: 0.25rem; }
+  .er-pic--photo img, .er-pic--pair img { padding: 0; }
+  .er-text { font-size: 1.2rem; }
+}
+
+@media (prefers-contrast: more) {
+  .er-pic { box-shadow: none; }
+}
+
+@media print {
+  .er-pic { box-shadow: none; }
+}
