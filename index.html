@@ -369,8 +369,10 @@
     box.setAttribute('role', 'region');
     items.forEach(function (a) {
       var item = el('div', 'announcement');
-      item.appendChild(el('h2', 'announcement-title', a.title));
-      paragraphs(item, a.body);
+      var text = el('div', 'announcement-text');
+      text.appendChild(el('h2', 'announcement-title', a.title));
+      paragraphs(text, a.body);
+      item.appendChild(text);
       var href = safeUrl(a.link_url);
       if (href) {
         var link = el('a', 'btn', a.link_label || 'Find out more');
