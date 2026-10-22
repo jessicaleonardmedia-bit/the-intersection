@@ -1,3 +1,9 @@
 {
-  "items": []
+  "items": [
+    {
+      "visible": true,
+      "title": "The Intersection",
+      "body": "Coming soon to community television"
+    }
+  ]
 }
