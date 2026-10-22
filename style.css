@@ -1347,3 +1347,8 @@ footer::before {
 
 /* Screen reader only text */
 .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Support page photos: framed like the hero photo, hard offset shadow */
+.support-photo { margin: 2rem 0 2.25rem; max-width: 100%; }
+.support-photo img { width: 100%; height: auto; border: var(--rule); box-shadow: var(--shadow); }
+.support-photo figcaption { margin-top: 0.85rem; font-size: 0.9rem; color: inherit; }
