@@ -98,6 +98,7 @@
   display: grid;
   gap: 1.5rem;
 }
+.vol-form[hidden] { display: none; }
 .vol-form h2 { margin: 0; }
 .vol-form .form-group { margin: 0; }
 .vol-access {
