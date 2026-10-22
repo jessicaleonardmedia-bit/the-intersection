@@ -7,7 +7,13 @@
       "airs": "On YouTube now!",
       "description": "The Intersection is a panel talk show that looks at everyday issues through an intersectional lens. In our pilot, we talk about periods, gender, culture and shame. There’s history, there’s humour.\n\nMade by three Melbourne women for community television, streaming and social.",
       "image": "/images/uploads/intersection_pilot_panel_promo.jpg",
-      "image_alt": "Four people smile behind a glossy studio desk on the set of The Intersection. From left: a person with short dark curly hair in a navy and mustard patterned shirt; a person in a pink and white hijab, black blouse and large hoop earrings; a person in bright red glasses and a black puff-sleeved top, leaning on the desk; and a person in a brown hijab and a bright blue ribbed cardigan. On the desk, three yellow bowls hold wrapped tampons with green pad packets tucked in like party snacks. The desk front glows hot pink around a patterned panel with the show’s logo and “Look both ways”, and the wall behind is covered in blue arrows and shapes."
+      "image_alt": "Four people smile behind a glossy studio desk on the set of The Intersection. From left: a person with short dark curly hair in a navy and mustard patterned shirt; a person in a pink and white hijab, black blouse and large hoop earrings; a person in bright red glasses and a black puff-sleeved top, leaning on the desk; and a person in a brown hijab and a bright blue ribbed cardigan. On the desk, three yellow bowls hold wrapped tampons with green pad packets tucked in like party snacks. The desk front glows hot pink around a patterned panel with the show’s logo and “Look both ways”, and the wall behind is covered in blue arrows and shapes.",
+      "links": [
+        {
+          "url": "https://youtu.be/adnmyeKl1fI?si=WSIfHHUM3igsl8mI",
+          "label": "Watch now"
+        }
+      ]
     }
   ]
 }
