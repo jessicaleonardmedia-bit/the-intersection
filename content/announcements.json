@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "visible": true,
+      "title": "Our fundraiser is live",
+      "body": "We’re raising money through the Australian Cultural Fund to finish our Pilot Season, get it to air, and pay more of the people who make the show. Donations over $2 are tax deductible, and the ACF takes no fees, so every dollar goes to the project.\n\nThe campaign closes on 20 December.",
+      "link_url": "https://artists.australianculturalfund.org.au/s/project/a2EMn00000kwsHm/the-intersection-pilot-season",
+      "link_label": "Donate now",
+      "show_until": "1906-12-20"
+    }
+  ]
 }
