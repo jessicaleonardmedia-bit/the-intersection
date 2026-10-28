@@ -105,3 +105,52 @@ collections:
               - {label: "Photo description", name: "photo_alt", widget: "string", required: false, hint: "For people using screen readers. Describe the person as they would want to be described."}
               - {label: "Link address", name: "link_url", widget: "string", required: false, hint: "Optional. Their own page or portfolio."}
               - {label: "Link words", name: "link_label", widget: "string", required: false, default: "See their work"}
+
+      # ---------------------------------------------------------------
+      - label: "Featured video"
+        name: "video"
+        file: "content/video.json"
+        description: "The video on the home page, under the big intro panel. It stays hidden until a video is added and set to show. Nothing loads from YouTube until a visitor presses play."
+        fields:
+          - label: "Video"
+            name: "items"
+            widget: "list"
+            label_singular: "video"
+            max: 1
+            summary: "{{fields.title}}"
+            required: false
+            fields:
+              - {label: "Show on the website", name: "visible", widget: "boolean", default: true}
+              - {label: "Heading", name: "title", widget: "string", hint: "Short. For example: Watch the teaser"}
+              - {label: "Description", name: "description", widget: "text", required: false, hint: "One or two sentences. Plain text."}
+              - {label: "YouTube link", name: "youtube_url", widget: "string", hint: "Paste the video's link from YouTube. Any YouTube link works. Check the video has captions."}
+              - {label: "Cover image", name: "cover", widget: "image", required: false, hint: "Optional. Shown before the video plays. Leave empty to use YouTube's own thumbnail. Landscape, 16 by 9."}
+              - {label: "Cover image description", name: "cover_alt", widget: "string", required: false, hint: "For people using screen readers. Only needed if you add a cover image."}
+
+      # ---------------------------------------------------------------
+      - label: "Social posts"
+        name: "social"
+        file: "content/social.json"
+        description: "The row of posts on the home page. It stays hidden until at least one post is set to show. Drag to reorder. Top of the list shows first."
+        fields:
+          - label: "Posts"
+            name: "items"
+            widget: "list"
+            label_singular: "post"
+            summary: "{{fields.platform}}: {{fields.caption}}"
+            required: false
+            fields:
+              - {label: "Show on the website", name: "visible", widget: "boolean", default: true}
+              - label: "Platform"
+                name: "platform"
+                widget: "select"
+                options:
+                  - {label: "Instagram", value: "instagram"}
+                  - {label: "Facebook", value: "facebook"}
+                  - {label: "LinkedIn", value: "linkedin"}
+                  - {label: "YouTube", value: "youtube"}
+                default: "instagram"
+              - {label: "Image", name: "image", widget: "image", hint: "Save the post's image and upload it here. Square works best."}
+              - {label: "Image description", name: "image_alt", widget: "string", hint: "For people using screen readers. You can reuse the post's alt text."}
+              - {label: "Caption", name: "caption", widget: "text", required: false, hint: "The start of the post, or a short line about it. Long captions get cut off after four lines."}
+              - {label: "Link to the post", name: "link_url", widget: "string", hint: "Full web address of the post, starting with https://"}

@@ -1370,3 +1370,223 @@ footer::before {
   .nav-menu { gap: 0.2rem; }
   .nav-menu a { padding: 0.5rem 0.5rem; white-space: nowrap; }
 }
+
+/* --------------------------------------------------------------------------
+   Home: featured video and social strip
+   Both are filled from the dashboard and stay hidden until there's
+   something to show. Video frame takes the hot pink offset shadow
+   (campaign photo frame rule). Strip sits on pale blue so Home reads
+   pale pink, white, pale blue.
+   -------------------------------------------------------------------------- */
+
+.home-block {
+  padding-block: clamp(2.75rem, 7vw, 5rem);
+  border-bottom: var(--rule);
+}
+.home-block h2 { margin-bottom: 1.25rem; }
+.home-block h2 .hl { line-height: 1.5; }
+
+/* Video */
+.home-video { background: var(--white); }
+.home-video-inner {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(1.75rem, 5vw, 4rem);
+  align-items: center;
+}
+.home-video-text p { max-width: 40ch; font-size: 1.1rem; }
+.home-video-text .watch-btn { margin-top: 1.25rem; }
+
+.home-video .featured-video {
+  box-shadow: 12px 12px 0 var(--pink);
+  position: relative;
+  overflow: hidden;
+}
+.video-facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: var(--black);
+  cursor: pointer;
+  display: block;
+}
+.video-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(64px, 11vw, 96px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--pink);
+  border: 4px solid var(--black);
+  box-shadow: var(--shadow);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.video-play::after {
+  content: "";
+  position: absolute;
+  left: 54%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 34%;
+  height: 40%;
+  background: var(--black);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.video-facade:hover .video-play,
+.video-facade:focus-visible .video-play {
+  transform: translate(calc(-50% - 3px), calc(-50% - 3px));
+  box-shadow: var(--shadow-lg);
+}
+.video-facade:focus-visible { outline: 4px solid var(--yellow); outline-offset: -8px; }
+
+/* Social strip */
+.home-social { background: var(--tint-blue); }
+.home-social-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.home-social-head h2 { margin-bottom: 0; }
+.social-nav { display: flex; gap: 0.6rem; }
+.social-nav-btn {
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--white);
+  color: var(--black);
+  border: 3px solid var(--black);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.social-nav-btn:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: var(--shadow); background: var(--yellow); }
+.social-nav-btn:disabled { opacity: 0.35; cursor: default; box-shadow: none; }
+.social-nav[data-fits] { display: none; }
+
+.home-social .social-scroll {
+  position: relative; /* keeps screen-reader-only text inside the strip */
+  list-style: none;
+  gap: 1.5rem;
+  padding: 0.25rem 0.75rem 1.5rem 0.25rem;
+  scroll-padding-left: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--black) transparent;
+}
+.home-social .social-card {
+  position: relative;
+  flex: 0 0 clamp(230px, 72vw, 280px);
+  display: flex;
+  box-shadow: var(--shadow);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.home-social .social-card:hover { transform: translate(-3px, -3px); box-shadow: var(--shadow-lg); }
+.social-link {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--black);
+  text-decoration: none;
+}
+.social-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  border-bottom: var(--rule);
+  background: var(--tint-pink);
+}
+.social-body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  flex: 1;
+}
+.home-social .social-card p { padding: 0; }
+.social-caption {
+  font-size: 0.98rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.social-more {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--black);
+}
+.social-link:hover .social-more,
+.social-link:focus-visible .social-more { border-color: var(--pink); }
+
+/* Platform tags: sign-plate chips. Only approved text-on-colour pairs. */
+.social-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.3rem 0.65rem 0.25rem;
+  border: 3px solid var(--black);
+  color: var(--black);
+}
+.social-tag--instagram { background: var(--pink); }
+.social-tag--facebook  { background: var(--purple); }
+.social-tag--linkedin  { background: var(--yellow); }
+.social-tag--youtube   { background: var(--blue); color: var(--white); }
+
+.social-follow {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.social-follow .social-tag {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.social-follow .social-tag:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow); }
+.social-follow .social-tag--youtube:hover { color: var(--white); }
+
+@media (max-width: 860px) {
+  /* Phone order follows the style guide: heading, picture, detail, link. */
+  .home-video-inner { grid-template-columns: 1fr; gap: 0; }
+  .home-video-text { display: contents; }
+  .home-video-text .eyebrow { order: 1; justify-self: start; }
+  .home-video-text h2 { order: 2; }
+  .home-video .featured-video { order: 3; margin: 0.5rem 12px 1.75rem 0; }
+  #homeVideoBody { order: 4; }
+  .home-video-text .watch-btn { order: 5; justify-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-play, .social-nav-btn, .home-social .social-card, .social-follow .social-tag { transition: none; }
+}

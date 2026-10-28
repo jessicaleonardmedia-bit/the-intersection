@@ -62,6 +62,48 @@
     </div>
   </section>
 
+  <!-- Featured video. Filled from content/video.json (edited in the dashboard).
+       Stays hidden until a video is set to show. Nothing loads from YouTube
+       until someone presses play. -->
+  <section class="home-block home-video" id="homeVideo" aria-labelledby="homeVideoHeading" hidden>
+    <div class="container home-video-inner">
+      <div class="home-video-text">
+        <span class="eyebrow">Watch</span>
+        <h2 id="homeVideoHeading"><span class="hl hl--yellow" id="homeVideoTitle"></span></h2>
+        <div id="homeVideoBody"></div>
+        <a class="watch-btn" id="homeVideoLink" href="#">Watch on YouTube<span class="visually-hidden"> (opens YouTube)</span></a>
+      </div>
+      <div class="featured-video" id="homeVideoFrame">
+        <button type="button" class="video-facade" id="homeVideoPlay">
+          <img id="homeVideoThumb" alt="">
+          <span class="video-play" aria-hidden="true"></span>
+          <span class="visually-hidden" id="homeVideoPlayLabel">Play video</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social strip. Filled from content/social.json (edited in the dashboard).
+       Stays hidden until at least one post is set to show. -->
+  <section class="home-block home-social" id="homeSocial" aria-labelledby="homeSocialHeading" hidden>
+    <div class="container">
+      <div class="home-social-head">
+        <h2 id="homeSocialHeading"><span class="hl hl--yellow">From our socials</span></h2>
+        <div class="social-nav">
+          <button type="button" class="social-nav-btn" id="socialPrev" aria-controls="socialList"><span aria-hidden="true">&larr;</span><span class="visually-hidden">Scroll back through posts</span></button>
+          <button type="button" class="social-nav-btn" id="socialNext" aria-controls="socialList"><span aria-hidden="true">&rarr;</span><span class="visually-hidden">Scroll forward through posts</span></button>
+        </div>
+      </div>
+      <ul class="social-scroll" id="socialList" tabindex="0" aria-label="Recent posts. Scroll sideways for more."></ul>
+      <ul class="social-follow">
+        <li><a class="social-tag social-tag--instagram" href="https://www.instagram.com/the.intersection.show/">Instagram</a></li>
+        <li><a class="social-tag social-tag--facebook" href="https://www.facebook.com/TheIntersectionShow">Facebook</a></li>
+        <li><a class="social-tag social-tag--linkedin" href="https://www.linkedin.com/company/110960926/">LinkedIn</a></li>
+        <li><a class="social-tag social-tag--youtube" href="https://www.youtube.com/channel/UC0Co8-0eV8NCEt-Fz_waI4g">YouTube</a></li>
+      </ul>
+    </div>
+  </section>
+
 </div>
 
 <!-- ===================== About ===================== -->
@@ -459,6 +501,84 @@
       if (href) inner.appendChild(el('span', 'person-more', p.link_label || 'See their work'));
       grid.appendChild(card);
     });
+  }).catch(function () {});
+
+  // Featured video. Takes any YouTube link and pulls out the video ID.
+  function youtubeId(u) {
+    var m = (u || '').match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([\w-]{11})/);
+    return m ? m[1] : '';
+  }
+  load('video').then(function (items) {
+    var v = items.filter(function (i) { return youtubeId(i.youtube_url); })[0];
+    if (!v) return;
+    var id = youtubeId(v.youtube_url);
+    var title = v.title || 'Watch';
+    document.getElementById('homeVideoTitle').textContent = title;
+    paragraphs(document.getElementById('homeVideoBody'), v.description);
+    var link = document.getElementById('homeVideoLink');
+    link.href = 'https://www.youtube.com/watch?v=' + id;
+    var thumb = document.getElementById('homeVideoThumb');
+    thumb.src = safeUrl(v.cover) || ('https://i.ytimg.com/vi/' + id + '/hqdefault.jpg');
+    thumb.alt = v.cover_alt || '';
+    document.getElementById('homeVideoPlayLabel').textContent = 'Play video: ' + title;
+    document.getElementById('homeVideoPlay').addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=en';
+      f.title = title;
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      var frame = document.getElementById('homeVideoFrame');
+      frame.textContent = '';
+      frame.appendChild(f);
+      f.focus();
+    });
+    document.getElementById('homeVideo').hidden = false;
+  }).catch(function () {});
+
+  // Social strip
+  var PLATFORMS = { instagram: 'Instagram', facebook: 'Facebook', linkedin: 'LinkedIn', youtube: 'YouTube' };
+  load('social').then(function (items) {
+    items = items.filter(function (p) { return safeUrl(p.image) && safeUrl(p.link_url); });
+    if (!items.length) return;
+    var list = document.getElementById('socialList');
+    items.forEach(function (p) {
+      var key = PLATFORMS[p.platform] ? p.platform : 'instagram';
+      var li = el('li', 'social-card');
+      var a = el('a', 'social-link');
+      a.href = safeUrl(p.link_url);
+      var img = el('img', 'social-image');
+      img.src = safeUrl(p.image);
+      img.alt = p.image_alt || '';
+      img.loading = 'lazy';
+      a.appendChild(img);
+      var body = el('div', 'social-body');
+      body.appendChild(el('span', 'social-tag social-tag--' + key, PLATFORMS[key]));
+      if (p.caption) body.appendChild(el('p', 'social-caption', p.caption));
+      var more = el('span', 'social-more', 'See the post');
+      more.appendChild(el('span', 'visually-hidden', ' on ' + PLATFORMS[key]));
+      body.appendChild(more);
+      a.appendChild(body);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    var prev = document.getElementById('socialPrev');
+    var next = document.getElementById('socialNext');
+    function step(dir) {
+      var card = list.querySelector('.social-card');
+      var w = card ? card.getBoundingClientRect().width + 24 : 280;
+      list.scrollBy({ left: dir * w, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+    function sync() {
+      prev.disabled = list.scrollLeft <= 2;
+      next.disabled = list.scrollLeft + list.clientWidth >= list.scrollWidth - 2;
+      prev.parentNode.toggleAttribute('data-fits', prev.disabled && next.disabled);
+    }
+    prev.addEventListener('click', function () { step(-1); });
+    next.addEventListener('click', function () { step(1); });
+    list.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    document.getElementById('homeSocial').hidden = false;
+    sync();
   }).catch(function () {});
 
   // Dashboard invite and password emails link back to this page with a token.
