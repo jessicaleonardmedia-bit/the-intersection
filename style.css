@@ -1364,3 +1364,9 @@ footer::before {
 .support-photo { margin: 2rem 0 2.25rem; max-width: 100%; }
 .support-photo img { width: 100%; height: auto; border: var(--rule); box-shadow: var(--shadow); }
 .support-photo figcaption { margin-top: 0.85rem; font-size: 0.9rem; color: inherit; }
+
+/* Tighter menu between phone layout and wide screens, so six menu items fit on one line */
+@media (min-width: 861px) and (max-width: 1000px) {
+  .nav-menu { gap: 0.2rem; }
+  .nav-menu a { padding: 0.5rem 0.5rem; white-space: nowrap; }
+}
