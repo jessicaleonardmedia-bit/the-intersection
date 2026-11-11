@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "visible": true,
+      "platform": "instagram",
+      "image": "/images/uploads/shazjessfists2.jpg",
+      "link_url": "https://www.instagram.com/p/DdC_QetAdUx/",
+      "image_alt": "Jess and Shaz stand arm in arm in front of a royal blue curtain, each raising a fist and smiling. Jess, on the left, has dark hair pulled back and wears large red and black glasses. Her white singlet carries a round badge reading “Intersectional Bogan Weirdo Feminist Melbourne” with a women’s symbol. Shaz rests her head against Jess’s and wears a patterned hijab, gold fan earrings and a black long sleeve top.",
+      "caption": "We posed for this photo last week, and were saddened to hear of Gloria Steinem’s passing just days later."
+    }
+  ]
 }
