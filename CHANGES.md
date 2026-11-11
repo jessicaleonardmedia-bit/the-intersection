@@ -50,3 +50,17 @@ Changed
 Not done yet
 - Easy Read index page and footer link (planned once Contact and Volunteer Easy Read pages exist).
 - index.html: pilot sentence on the About page now names the guests (Heti Mackallah, Aula Idris) and drops the host descriptors.
+
+# Easy Read Contact and Volunteer
+
+Added
+- easy-read/contact.html and easy-read/volunteer.html, built from the About page template.
+- images/easy-read/: ask, calendar, chat, choose, clock, come, communities, credit, email, email-back, email-send, form, guest, help, laptop, money, no-pay, share, skill, studio, team, tick, together, website-form (Mulberry, recoloured; no-pay is money with a cross).
+
+Changed
+- index.html: "Read how to get in touch in Easy Read" link under the Contact heading.
+- volunteer.html: "Read about volunteering in Easy Read" link under the heading. "Community and access" group and its form row removed (community adviser, cultural consultant, Auslan interpreter, access consultant dropped for now). Community language translator moved to "Getting the word out".
+- sitemap.xml: both new Easy Read pages added.
+
+Not done yet
+- Easy Read index page and footer link.
