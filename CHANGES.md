@@ -38,3 +38,15 @@ Changed
 Added
 - images/logos/auspicious-arts-projects-white.svg (from the Auspicious kit, unaltered)
 - images/logos/c31-white.png (white C31 logo)
+
+# Easy Read About goes live
+
+Changed
+- easy-read/about.html: noindex removed, canonical tag added, footer heading "Elsewhere" changed to "Socials".
+- index.html: "Read about the show in Easy Read" link at the top of the About section.
+- sitemap.xml: /easy-read/about added.
+- style.css: .easy-read-link style.
+
+Not done yet
+- Easy Read index page and footer link (planned once Contact and Volunteer Easy Read pages exist).
+- index.html: pilot sentence on the About page now names the guests (Heti Mackallah, Aula Idris) and drops the host descriptors.
