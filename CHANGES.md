@@ -27,3 +27,14 @@ Changed
 Added
 - content/announcements.json, content/episodes.json, content/people.json
 - images/uploads/ (where dashboard uploads go)
+
+# Footer logos round
+
+Changed
+- index.html, volunteer.html, easy-read/about.html: CBF taken out of the "With support from" line. New logo row in the footer with the Auspicious Arts Projects logo and the C31 logo.
+- index.html only: CBF logo (linked to cbf.org.au) and the set sentence from grant clause 14.2E, now in the logo row. Volunteer and Easy Read pages no longer carry the CBF block.
+- style.css: .cbf-ack and .cbf-logo replaced with .partner-logos, .partner-logo and .cbf-line. All logos 56px tall. Auspicious logo has clear space of one "A" width, per their guidelines.
+
+Added
+- images/logos/auspicious-arts-projects-white.svg (from the Auspicious kit, unaltered)
+- images/logos/c31-white.png (white C31 logo)

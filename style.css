@@ -1200,14 +1200,16 @@ footer::before {
 @media (max-width: 860px) { .hero-discs span { width: 180px; } }
 @media (prefers-contrast: more) { .hero-discs { display: none; } }
 
-/* Supporter links and the CBF acknowledgement (grant clause 14.2E). */
+/* Supporter links, partner logos, and the CBF acknowledgement.
+   CBF (grant clause 14.2E): logo linked to cbf.org.au plus the set sentence, home page only.
+   Auspicious Arts Projects: white logo on dark, clear space of one "A" width all round, never under 7.5mm tall. */
 .acknowledgement a { color: var(--white); }
 .acknowledgement a:hover { color: var(--yellow); }
-.cbf-ack { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-bottom: 1.5rem; }
-.cbf-ack p { margin: 0; font-size: 0.9rem; max-width: 60ch; }
-.cbf-logo { display: inline-block; }
-.cbf-logo img { height: 64px; width: auto; }
-.cbf-logo span { color: var(--black); font-family: var(--mono); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.9rem; }
+.partner-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-bottom: 1rem; }
+.partner-logo { display: inline-block; line-height: 0; }
+.partner-logo img { height: 56px; width: auto; }
+.partner-logo--aap { padding: 0.8rem; }
+.cbf-line { margin: 0 0 1.5rem; font-size: 0.85rem; max-width: 60ch; }
 
 /* Web logo: typed name with a stencil tag, optionally led by the two-way arrow. */
 .nav-brand { color: var(--black); }
