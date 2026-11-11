@@ -62,5 +62,12 @@ Changed
 - volunteer.html: "Read about volunteering in Easy Read" link under the heading. "Community and access" group and its form row removed (community adviser, cultural consultant, Auslan interpreter, access consultant dropped for now). Community language translator moved to "Getting the word out".
 - sitemap.xml: both new Easy Read pages added.
 
-Not done yet
-- Easy Read index page and footer link.
+
+# Easy Read index and footer link
+
+Added
+- easy-read/index.html (served at /easy-read/): what Easy Read is, and links to the About, Contact and Volunteer Easy Read pages.
+
+Changed
+- Footer "Pages" list on index.html, volunteer.html and all three Easy Read pages: "Easy Read" link to /easy-read/.
+- sitemap.xml: /easy-read/ added.
