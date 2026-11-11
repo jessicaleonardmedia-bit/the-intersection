@@ -71,3 +71,14 @@ Added
 Changed
 - Footer "Pages" list on index.html, volunteer.html and all three Easy Read pages: "Easy Read" link to /easy-read/.
 - sitemap.xml: /easy-read/ added.
+
+# Search round
+
+Changed
+- index.html: structured data (schema.org TVSeries) naming the show, its hosts, where it's made and its socials.
+- shazma-gaffoor.html: search description, canonical link, Australian English.
+- Photos recompressed (same size and look, smaller files): support-control-room.jpg, support-producers.jpg, support-studio.jpg, p1240718_1.jpg, Shazma_Gaffoor_Headshot_2026.jpg.
+
+To delete on GitHub (not used anywhere)
+- host_promo_website_vertical.png
+- intersection_lockup_pink.png
