@@ -23,6 +23,9 @@
   .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; padding: 0; list-style: none; }
   .tags li { background: var(--pink-pale); border: 2px solid var(--black); padding: 0.1rem 0.5rem; font-size: 0.9rem; }
   .tags li.pillar { background: var(--tint-blue); }
+  .caption { margin-top: 0.9rem; }
+  .caption summary { cursor: pointer; font-weight: 700; }
+  .caption p { margin: 0.6rem 0 0; white-space: pre-line; }
 </style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -32,7 +35,7 @@
 
 <main id="main" class="crew" tabindex="-1">
   <h1>Coming up</h1>
-  <p class="lead">Social posts that are approved or scheduled, soonest first. Have a look before you make something new, so we don't double up.</p>
+  <p class="lead">Social posts that are approved or scheduled, soonest first. Have a look, and read the captions, before you make something new, so we don't double up.</p>
 
   <div class="crew-actions">
     <button class="btn" id="loginBtn" type="button" hidden>Log in</button>
@@ -99,6 +102,12 @@
       if (post.contentType) tags.appendChild(el('li', null, post.contentType));
       post.platforms.forEach(function (p) { tags.appendChild(el('li', null, p)); });
       if (tags.children.length) li.appendChild(tags);
+      if (post.caption) {
+        var details = el('details', 'caption');
+        details.appendChild(el('summary', null, 'Read the caption'));
+        details.appendChild(el('p', null, post.caption));
+        li.appendChild(details);
+      }
       ul.appendChild(li);
     });
   }
