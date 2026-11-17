@@ -91,7 +91,7 @@ Changed
 
 Added
 - crew/coming-up.html: crew-only page listing approved and scheduled social posts from Notion, soonest first. Hidden from search.
-- netlify/functions/coming-up.js: reads the Notion Posts database with a read-only key (NOTION_TOKEN and NOTION_POSTS_DB in Netlify settings). Sends titles, dates, pillar, content type and platforms only, to logged-in crew with a role.
+- netlify/functions/coming-up.js: reads the Notion Posts database with a read-only key (NOTION_TOKEN and NOTION_POSTS_DB in Netlify settings). Sends titles, dates, pillar, content type, platforms and the approved caption (from the page body) for Approved and Scheduled posts only, to logged-in crew with a role.
 - content-admin/: an Episodes-only dashboard for Content Admins.
 
 Roles (Netlify Identity)
