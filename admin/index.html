@@ -6,6 +6,19 @@
   <meta name="robots" content="noindex">
   <title>The Intersection website dashboard</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // This dashboard is for Executive Producers. Anyone else goes to their own page.
+    (function () {
+      function route(user) {
+        if (!user) return;
+        var roles = (user.app_metadata && user.app_metadata.roles) || [];
+        if (roles.indexOf('Executive Producer') !== -1) return;
+        location.replace(roles.indexOf('Content Admin') !== -1 ? '/content-admin/' : '/crew/coming-up');
+      }
+      window.netlifyIdentity.on('init', route);
+      window.netlifyIdentity.on('login', route);
+    })();
+  </script>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>

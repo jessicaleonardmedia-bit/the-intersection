@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>The Intersection episodes dashboard</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // The episodes dashboard is for Content Admins and Executive Producers.
+    // Anyone else goes to the crew Coming up page.
+    (function () {
+      function route(user) {
+        if (!user) return;
+        var roles = (user.app_metadata && user.app_metadata.roles) || [];
+        if (roles.indexOf('Content Admin') !== -1 || roles.indexOf('Executive Producer') !== -1) return;
+        location.replace('/crew/coming-up');
+      }
+      window.netlifyIdentity.on('init', route);
+      window.netlifyIdentity.on('login', route);
+    })();
+  </script>
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+</html>

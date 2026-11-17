@@ -82,3 +82,20 @@ Changed
 To delete on GitHub (not used anywhere)
 - host_promo_website_vertical.png
 - intersection_lockup_pink.png
+
+# Crew access round (17 November 2026)
+
+Changed
+- index.html: after an invite or password email, people go to the page that matches their role (Executive Producer to /admin, Content Admin to /content-admin, everyone else to /crew/coming-up).
+- admin/index.html: only Executive Producers stay on the full dashboard. Others are sent to their own page.
+
+Added
+- crew/coming-up.html: crew-only page listing approved and scheduled social posts from Notion, soonest first. Hidden from search.
+- netlify/functions/coming-up.js: reads the Notion Posts database with a read-only key (NOTION_TOKEN and NOTION_POSTS_DB in Netlify settings). Sends titles, dates, pillar, content type and platforms only, to logged-in crew with a role.
+- content-admin/: an Episodes-only dashboard for Content Admins.
+
+Roles (Netlify Identity)
+- Executive Producer: full dashboard, Coming up.
+- Content Admin: Episodes dashboard, Coming up. Sets episodes to Ready; an Executive Producer publishes.
+- Volunteer: Coming up only.
+- Git Gateway is limited to Executive Producer and Content Admin.

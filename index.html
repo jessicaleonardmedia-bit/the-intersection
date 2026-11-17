@@ -633,7 +633,12 @@
     var s = document.createElement('script');
     s.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
     s.onload = function () {
-      window.netlifyIdentity.on('login', function () { location.href = '/admin/'; });
+      window.netlifyIdentity.on('login', function (user) {
+        var roles = (user && user.app_metadata && user.app_metadata.roles) || [];
+        if (roles.indexOf('Executive Producer') !== -1) location.href = '/admin/';
+        else if (roles.indexOf('Content Admin') !== -1) location.href = '/content-admin/';
+        else location.href = '/crew/coming-up';
+      });
     };
     document.head.appendChild(s);
   }
