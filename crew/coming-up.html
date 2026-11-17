@@ -23,6 +23,7 @@
   .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; padding: 0; list-style: none; }
   .tags li { background: var(--pink-pale); border: 2px solid var(--black); padding: 0.1rem 0.5rem; font-size: 0.9rem; }
   .tags li.pillar { background: var(--tint-blue); }
+  .post-image { display: block; width: 100%; max-width: 320px; margin: 0.8rem 0 0; border: 3px solid var(--black); }
   .caption { margin-top: 0.9rem; }
   .caption summary { cursor: pointer; font-weight: 700; }
   .caption p { margin: 0.6rem 0 0; white-space: pre-line; }
@@ -102,6 +103,14 @@
       if (post.contentType) tags.appendChild(el('li', null, post.contentType));
       post.platforms.forEach(function (p) { tags.appendChild(el('li', null, p)); });
       if (tags.children.length) li.appendChild(tags);
+      if (post.image) {
+        var img = el('img', 'post-image');
+        img.src = post.image;
+        img.alt = post.alt || ('Image for ' + (post.title || 'this post'));
+        img.loading = 'lazy';
+        img.onerror = function () { img.remove(); };
+        li.appendChild(img);
+      }
       if (post.caption) {
         var details = el('details', 'caption');
         details.appendChild(el('summary', null, 'Read the caption'));
