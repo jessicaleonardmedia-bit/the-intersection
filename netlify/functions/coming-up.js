@@ -1,7 +1,8 @@
 // Coming up: the list of approved and scheduled social posts for the crew page.
 // Reads the Notion Posts database with a read-only key kept in Netlify settings
 // (NOTION_TOKEN and NOTION_POSTS_DB). Only logged-in crew with a role can see it.
-// It sends titles, dates, pillar, content type and platforms. Never captions or drafts.
+// It sends titles, dates, pillar, content type, platforms and the approved caption.
+// Never drafts: only Approved and Scheduled posts are sent.
 
 const ALLOWED_ROLES = ['Executive Producer', 'Content Admin', 'Volunteer'];
 const SHOWN_STATUSES = ['Approved', 'Scheduled'];
@@ -25,6 +26,35 @@ function read(prop) {
     case 'date': return prop.date && prop.date.start ? prop.date.start.slice(0, 10) : '';
     default: return '';
   }
+}
+
+const TEXT_TYPES = ['paragraph', 'heading_1', 'heading_2', 'heading_3', 'bulleted_list_item',
+  'numbered_list_item', 'quote', 'callout', 'toggle'];
+
+// Pulls the caption out of a post's page body. Uses the section under any heading
+// with "caption" in it. If the page has no headings, uses the text before "Alt text".
+async function captionFor(pageId, token) {
+  const res = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children?page_size=100`, {
+    headers: { Authorization: `Bearer ${token}`, 'Notion-Version': '2022-06-28' },
+  });
+  if (!res.ok) return '';
+  const data = await res.json();
+  const blocks = data.results
+    .filter((b) => TEXT_TYPES.includes(b.type))
+    .map((b) => ({
+      heading: b.type.startsWith('heading'),
+      text: (b[b.type].rich_text || []).map((t) => t.plain_text).join('').trim(),
+    }));
+
+  const hasHeadings = blocks.some((b) => b.heading);
+  const out = [];
+  let inCaption = !hasHeadings;
+  for (const b of blocks) {
+    if (b.heading) { inCaption = /caption/i.test(b.text); continue; }
+    if (!hasHeadings && /^alt text/i.test(b.text)) break;
+    if (inCaption && b.text) out.push(b.text);
+  }
+  return out.join('\n\n');
 }
 
 exports.handler = async (event, context) => {
@@ -71,6 +101,7 @@ exports.handler = async (event, context) => {
       const p = page.properties;
       const platforms = read(p['Platforms']);
       return {
+        id: page.id,
         title: read(Object.values(p).find((x) => x.type === 'title')),
         date: read(p['Post date']),
         status: read(p['Status']),
@@ -81,6 +112,11 @@ exports.handler = async (event, context) => {
     })
     .filter((post) => SHOWN_STATUSES.includes(post.status))
     .map(({ status, ...rest }) => rest);
+
+  await Promise.all(posts.map(async (post) => {
+    post.caption = await captionFor(post.id, token);
+    delete post.id;
+  }));
 
   return reply(200, { posts });
 };
