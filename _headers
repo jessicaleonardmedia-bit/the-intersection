@@ -1,0 +1,9 @@
+# Pages that stay live but are kept out of search.
+/volunteer
+  X-Robots-Tag: noindex
+/volunteer.html
+  X-Robots-Tag: noindex
+/easy-read/volunteer
+  X-Robots-Tag: noindex
+/easy-read/volunteer.html
+  X-Robots-Tag: noindex

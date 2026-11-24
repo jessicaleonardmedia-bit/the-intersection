@@ -99,3 +99,20 @@ Roles (Netlify Identity)
 - Content Admin: Episodes dashboard, Coming up. Sets episodes to Ready; an Executive Producer publishes.
 - Volunteer: Coming up only.
 - Git Gateway is limited to Executive Producer and Content Admin.
+
+# Volunteer pages unlinked (25 November 2026)
+
+Volunteer applications are closed for now. Both volunteer pages stay live and unchanged, but nothing links to them and search engines are told not to list them.
+
+Changed
+- index.html: "Volunteer with us" removed from the menu and the footer.
+- easy-read/index.html: "Volunteer with us" row removed, and volunteering taken out of the page description.
+- sitemap.xml: /volunteer and /easy-read/volunteer removed.
+
+Added
+- _headers: tells search engines not to list /volunteer and /easy-read/volunteer (X-Robots-Tag: noindex). robots.txt is unchanged on purpose: blocking the pages there would stop search engines seeing the noindex.
+
+Not touched
+- volunteer.html, volunteer.css, easy-read/volunteer.html.
+
+To bring the pages back: put the links back, add both pages to sitemap.xml, and delete their lines from _headers.
